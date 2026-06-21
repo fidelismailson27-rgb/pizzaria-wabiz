@@ -7,11 +7,11 @@ export default async function CardapioPreview() {
   const pizzas = await getPizzasDestaque();
 
   return (
-    <section className="section-padding bg-white dark:bg-dark-950">
+    <section className="section-padding" style={{ backgroundColor: '#0F1115' }}>
       <div className="container-custom">
         <div className="mb-12 text-center">
-          <h2 className="heading-lg mb-4">Nosso Cardápio</h2>
-          <p className="mx-auto max-w-2xl text-dark-600 dark:text-dark-300">
+          <h2 className="heading-lg mb-4 text-white">Nosso Cardápio</h2>
+          <p className="mx-auto max-w-2xl text-white/60">
             Descubra nossas pizzas artesanais, feitas com ingredientes selecionados e muito amor
           </p>
         </div>
@@ -21,9 +21,9 @@ export default async function CardapioPreview() {
             <Link
               key={pizza._id}
               href="/cardapio"
-              className="group card overflow-hidden transition-all hover:-translate-y-1"
+              className="glass-card group overflow-hidden"
             >
-              <div className="relative aspect-square overflow-hidden rounded-lg bg-dark-100 dark:bg-dark-800">
+              <div className="relative aspect-square overflow-hidden rounded-xl bg-dark-800">
                 {pizza.imagem?.asset?._ref ? (
                   <Image
                     src={urlForImage(pizza.imagem) || ''}
@@ -33,21 +33,23 @@ export default async function CardapioPreview() {
                     className="object-cover transition-transform group-hover:scale-105"
                   />
                 ) : (
-                  <div className="flex h-full items-center justify-center text-4xl">🍕</div>
+                  <div className="placeholder-pizza flex h-full items-center justify-center">
+                    <span className="text-4xl opacity-80">🍕</span>
+                  </div>
                 )}
               </div>
               <div className="mt-4">
-                <h3 className="text-lg font-semibold text-dark-900 dark:text-white">
+                <h3 className="text-lg font-semibold text-white">
                   {pizza.nome}
                 </h3>
-                <p className="mt-1 line-clamp-2 text-sm text-dark-500 dark:text-dark-400">
+                <p className="mt-1 line-clamp-2 text-sm text-white/60">
                   {pizza.descricao}
                 </p>
                 <div className="mt-3 flex items-center justify-between">
-                  <span className="text-lg font-bold text-primary-500">
+                  <span className="text-lg font-bold text-accent">
                     R$ {pizza.preco.toFixed(2)}
                   </span>
-                  <span className="text-sm text-dark-400 group-hover:text-primary-500">
+                  <span className="text-sm text-white/50 group-hover:text-accent">
                     Ver mais →
                   </span>
                 </div>

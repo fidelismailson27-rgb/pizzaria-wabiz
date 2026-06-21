@@ -9,33 +9,33 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/brand/logo-venerato.jpg"
-            alt="Venerato Pizzas"
+            alt="Venerato Pizzas - Logo"
             width={40}
             height={40}
             className="rounded-lg object-cover"
             priority
           />
-          <span className="font-display text-xl font-bold text-dark-950 dark:text-white">
-            Venerato Pizzas
+          <span className="text-lg font-bold text-white">
+            Venerato
           </span>
         </Link>
 
         <nav className="hidden items-center space-x-8 md:flex">
           <Link
             href="/cardapio"
-            className="text-sm font-medium text-dark-600 transition-colors hover:text-primary dark:text-dark-300"
+            className="text-sm font-medium text-white/70 transition-colors hover:text-white"
           >
             Cardápio
           </Link>
           <Link
             href="/localizacao"
-            className="text-sm font-medium text-dark-600 transition-colors hover:text-primary dark:text-dark-300"
+            className="text-sm font-medium text-white/70 transition-colors hover:text-white"
           >
             Localização
           </Link>
           <Link
             href="/sobre"
-            className="text-sm font-medium text-dark-600 transition-colors hover:text-primary dark:text-dark-300"
+            className="text-sm font-medium text-white/70 transition-colors hover:text-white"
           >
             Sobre
           </Link>
@@ -43,7 +43,7 @@ export default function Header() {
             href="https://wabiz.com.br/venerato-pizzas"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary"
+            className="btn-accent"
           >
             Pedir Agora
           </a>

@@ -10,52 +10,42 @@ export default function Navbar() {
     <div className="md:hidden">
       <button
         type="button"
-        className="inline-flex items-center justify-center rounded-lg p-2 text-dark-600 transition-colors hover:bg-primary/10 hover:text-primary"
+        className="inline-flex items-center justify-center rounded-lg p-2 text-white/70 transition-colors hover:text-white"
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-label="Menu de navegação"
       >
         {isOpen ? (
           <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         ) : (
           <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         )}
       </button>
 
       {isOpen && (
-        <div className="absolute left-0 right-0 top-16 border-b border-white/20 bg-white/90 shadow-lg backdrop-blur-xl dark:bg-dark-950/90">
+        <div className="glass absolute left-0 right-0 top-16 border-b border-white/10">
           <nav className="container-custom space-y-1 py-4">
             <Link
               href="/cardapio"
-              className="block rounded-xl px-4 py-3 text-base font-medium text-dark-600 transition-all hover:bg-primary/10 hover:text-primary dark:text-dark-300"
+              className="block rounded-xl px-4 py-3 text-base font-medium text-white/80 transition-all hover:bg-white/10 hover:text-white"
               onClick={() => setIsOpen(false)}
             >
               Cardápio
             </Link>
             <Link
               href="/localizacao"
-              className="block rounded-xl px-4 py-3 text-base font-medium text-dark-600 transition-all hover:bg-primary/10 hover:text-primary dark:text-dark-300"
+              className="block rounded-xl px-4 py-3 text-base font-medium text-white/80 transition-all hover:bg-white/10 hover:text-white"
               onClick={() => setIsOpen(false)}
             >
               Localização
             </Link>
             <Link
               href="/sobre"
-              className="block rounded-xl px-4 py-3 text-base font-medium text-dark-600 transition-all hover:bg-primary/10 hover:text-primary dark:text-dark-300"
+              className="block rounded-xl px-4 py-3 text-base font-medium text-white/80 transition-all hover:bg-white/10 hover:text-white"
               onClick={() => setIsOpen(false)}
             >
               Sobre
@@ -65,7 +55,7 @@ export default function Navbar() {
                 href="https://wabiz.com.br/venerato-pizzas"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full text-center btn-primary"
+                className="block w-full text-center btn-accent"
                 onClick={() => setIsOpen(false)}
               >
                 Pedir Agora

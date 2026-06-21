@@ -22,15 +22,7 @@ export const metadata: Metadata = {
   },
   description:
     'Descubra a experiência única da Venerato Pizzas. Pizzas artesanais com ingredientes selecionados. Peça agora pela WAbiz!',
-  keywords: [
-    'pizzaria',
-    'pizza',
-    'pizza artesanal',
-    'melhor pizza',
-    'delivery',
-    'Venerato',
-    'WAbiz',
-  ],
+  keywords: ['pizzaria', 'pizza', 'pizza artesanal', 'melhor pizza', 'delivery', 'Venerato', 'WAbiz', 'Taboão da Serra'],
   authors: [{ name: 'Venerato Pizzas' }],
   creator: 'Venerato Pizzas',
   publisher: 'Venerato Pizzas',
@@ -88,8 +80,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#008060' },
-    { media: '(prefers-color-scheme: dark)', color: '#121212' },
+    { media: '(prefers-color-scheme: light)', color: '#FFF8E7' },
+    { media: '(prefers-color-scheme: dark)', color: '#0F1115' },
   ],
   width: 'device-width',
   initialScale: 1,
@@ -103,7 +95,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${playfair.variable}`}>
-      <body className="min-h-screen bg-white font-sans antialiased">
+      <body className="min-h-screen font-sans antialiased" style={{ backgroundColor: '#FFF8E7' }}>
         {children}
         <WhatsAppFloat telefone="5511999990001" nomeUnidade="Venerato Pizzas" />
       </body>

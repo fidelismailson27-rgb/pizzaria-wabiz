@@ -23,28 +23,28 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-dark-950 text-white">
+    <footer className="border-t border-white/10" style={{ backgroundColor: '#0F1115' }}>
       <div className="container-custom py-12">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-3">
               <Image
                 src="/brand/logo-venerato.jpg"
-                alt="Venerato Pizzas"
+                alt="Venerato Pizzas - Logo"
                 width={40}
                 height={40}
                 className="rounded-lg object-cover"
               />
-              <span className="font-display text-xl font-bold">Venerato Pizzas</span>
+              <span className="text-lg font-bold text-white">Venerato Pizzas</span>
             </Link>
-            <p className="text-sm text-dark-300">
+            <p className="text-sm text-white/60">
               A melhor pizza da cidade. Ingredientes selecionados e sabor incomparável.
             </p>
             <InstagramFeed />
           </div>
 
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-accent">
               Cardápio
             </h3>
             <ul className="space-y-2">
@@ -52,7 +52,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-dark-300 transition-colors hover:text-white"
+                    className="text-sm text-white/60 transition-colors hover:text-white"
                   >
                     {link.name}
                   </Link>
@@ -62,7 +62,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-accent">
               Institucional
             </h3>
             <ul className="space-y-2">
@@ -70,7 +70,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-dark-300 transition-colors hover:text-white"
+                    className="text-sm text-white/60 transition-colors hover:text-white"
                   >
                     {link.name}
                   </Link>
@@ -80,11 +80,11 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-accent">
               Contato
             </h3>
-            <ul className="space-y-2 text-sm text-dark-300">
-              <li>📍 Rua Augusta, 1234 - Consolação</li>
+            <ul className="space-y-2 text-sm text-white/60">
+              <li>📍 Taboão da Serra - SP</li>
               <li>📞 +55 11 3256-1234</li>
               <li>✉️ contato@veneratopizzas.com.br</li>
             </ul>
@@ -95,7 +95,7 @@ export default function Footer() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-dark-300 transition-colors hover:text-primary"
+                  className="text-white/60 transition-colors hover:text-accent"
                   aria-label={link.name}
                 >
                   {link.icon === 'instagram' && (
@@ -119,7 +119,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-dark-800 pt-8 text-center text-sm text-dark-400">
+        <div className="mt-8 border-t border-white/10 pt-8 text-center text-sm text-white/40">
           <p>© {new Date().getFullYear()} Venerato Pizzas. Todos os direitos reservados.</p>
           <p className="mt-1">
             Peça pela{' '}
@@ -127,7 +127,7 @@ export default function Footer() {
               href="https://wabiz.com.br"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary hover:underline"
+              className="text-accent hover:underline"
             >
               WAbiz
             </a>
