@@ -13,9 +13,7 @@ interface InstagramFeedProps {
   usuario?: string;
 }
 
-export default function InstagramFeed({
-  usuario = '@pizzariapremium',
-}: InstagramFeedProps) {
+export default function InstagramFeed({ usuario = '@pizzariapremium' }: InstagramFeedProps) {
   return (
     <div className="space-y-3">
       <a
