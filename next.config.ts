@@ -10,11 +10,11 @@ const securityHeaders = [
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      "script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com",
-      "style-src 'self'",
-      "img-src 'self' https://maps.googleapis.com https://maps.gstatic.com data: blob:",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com",
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' https://maps.googleapis.com https://maps.gstatic.com https://cdn.sanity.io data: blob:",
       "font-src 'self'",
-      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com",
+      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.sanity.io",
       "frame-src https://www.google.com https://maps.google.com",
       "object-src 'none'",
       "base-uri 'self'",
@@ -49,18 +49,13 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  experimental: {
-    sri: { algorithm: 'sha256' },
-  },
   output: 'standalone',
   reactStrictMode: true,
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'maps.googleapis.com',
-      },
+      { protocol: 'https', hostname: 'maps.googleapis.com' },
+      { protocol: 'https', hostname: 'cdn.sanity.io' },
     ],
   },
   async headers() {
@@ -73,14 +68,8 @@ const nextConfig: NextConfig = {
         source: '/api/:path*',
         headers: [
           ...securityHeaders,
-          {
-            key: 'X-RateLimit-Limit',
-            value: '100',
-          },
-          {
-            key: 'X-RateLimit-Remaining',
-            value: '99',
-          },
+          { key: 'X-RateLimit-Limit', value: '100' },
+          { key: 'X-RateLimit-Remaining', value: '99' },
         ],
       },
     ];

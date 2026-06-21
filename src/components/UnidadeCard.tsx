@@ -1,15 +1,6 @@
 import Link from 'next/link';
 import { generateWhatsAppLink, getWhatsAppMensagemUnidade } from '@/lib/wabiz';
-
-interface Unidade {
-  id: string;
-  nome: string;
-  slug: string;
-  endereco: string;
-  telefone: string;
-  whatsapp: string;
-  horarios: Record<string, string>;
-}
+import type { Unidade } from '@/lib/sanity-queries';
 
 interface UnidadeCardProps {
   unidade: Unidade;
@@ -27,13 +18,13 @@ export default function UnidadeCard({ unidade }: UnidadeCardProps) {
 
       <div className="mt-4 space-y-1 text-sm text-dark-400">
         <p>📞 {unidade.telefone}</p>
-        <p>🕐 Seg-Sex: {unidade.horarios.sexta}</p>
-        <p>🕐 Sáb-Dom: {unidade.horarios.sabado}</p>
+        <p>🕐 Seg-Sex: {unidade.horarios?.sexta || '18:00-01:00'}</p>
+        <p>🕐 Sáb-Dom: {unidade.horarios?.sabado || '18:00-01:00'}</p>
       </div>
 
       <div className="mt-6 flex flex-wrap gap-2">
         <Link
-          href={`/localizacao/${unidade.slug}`}
+          href={`/localizacao/${unidade.slug.current}`}
           className="btn-primary flex-1 justify-center text-sm"
         >
           Ver Detalhes

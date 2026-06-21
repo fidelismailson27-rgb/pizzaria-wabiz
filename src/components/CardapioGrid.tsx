@@ -1,29 +1,36 @@
 'use client';
 
 import { useState } from 'react';
-import cardapio from '@/data/cardapio.json';
 import PizzaCard from './PizzaCard';
+import type { Pizza, Categoria } from '@/lib/sanity-queries';
 
-export default function CardapioGrid() {
+interface CardapioGridProps {
+  initialPizzas: Pizza[];
+  categorias: Categoria[];
+}
+
+export default function CardapioGrid({ initialPizzas, categorias }: CardapioGridProps) {
   const [categoriaAtiva, setCategoriaAtiva] = useState('todas');
 
-  const categorias = [{ id: 'todas', nome: 'Todas' }, ...cardapio.categorias];
+  const categoriasComTodas = [
+    { _id: 'todas', nome: 'Todas', slug: { current: 'todas' }, descricao: '', ordem: -1 },
+    ...categorias,
+  ];
 
   const pizzasFiltradas =
     categoriaAtiva === 'todas'
-      ? cardapio.pizzas
-      : cardapio.pizzas.filter((pizza) => pizza.categoria === categoriaAtiva);
+      ? initialPizzas
+      : initialPizzas.filter((pizza) => pizza.categoria?.slug?.current === categoriaAtiva);
 
   return (
     <div>
-      {/* Filtros */}
       <div className="mb-8 flex flex-wrap justify-center gap-2">
-        {categorias.map((categoria) => (
+        {categoriasComTodas.map((categoria) => (
           <button
-            key={categoria.id}
-            onClick={() => setCategoriaAtiva(categoria.id)}
+            key={categoria._id}
+            onClick={() => setCategoriaAtiva(categoria.slug.current)}
             className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-              categoriaAtiva === categoria.id
+              categoriaAtiva === categoria.slug.current
                 ? 'bg-primary-500 text-white'
                 : 'bg-dark-100 text-dark-600 hover:bg-dark-200 dark:bg-dark-800 dark:text-dark-300 dark:hover:bg-dark-700'
             }`}
@@ -33,10 +40,9 @@ export default function CardapioGrid() {
         ))}
       </div>
 
-      {/* Grid de pizzas */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {pizzasFiltradas.map((pizza) => (
-          <PizzaCard key={pizza.id} pizza={pizza} />
+          <PizzaCard key={pizza._id} pizza={pizza} />
         ))}
       </div>
 

@@ -1,15 +1,6 @@
+import { urlForImage } from '@/lib/sanity';
 import WAbizButton from './WAbizButton';
-
-interface Pizza {
-  id: string;
-  nome: string;
-  descricao: string;
-  preco: number;
-  categoria: string;
-  imagem: string;
-  ingredientes: string[];
-  destaque: boolean;
-}
+import type { Pizza } from '@/lib/sanity-queries';
 
 interface PizzaCardProps {
   pizza: Pizza;
@@ -19,9 +10,16 @@ export default function PizzaCard({ pizza }: PizzaCardProps) {
   return (
     <div className="group card overflow-hidden transition-all hover:-translate-y-1">
       <div className="aspect-square overflow-hidden rounded-lg bg-dark-100 dark:bg-dark-800">
-        <div className="flex h-full items-center justify-center text-6xl transition-transform group-hover:scale-110">
-          🍕
-        </div>
+        {pizza.imagem?.asset?._ref ? (
+          <img
+            src={urlForImage(pizza.imagem) || ''}
+            alt={pizza.nome}
+            className="h-full w-full object-cover transition-transform group-hover:scale-105"
+            loading="lazy"
+          />
+        ) : (
+          <div className="flex h-full items-center justify-center text-6xl">🍕</div>
+        )}
       </div>
       <div className="mt-4">
         <div className="flex items-start justify-between">
@@ -35,7 +33,7 @@ export default function PizzaCard({ pizza }: PizzaCardProps) {
         <p className="mt-2 line-clamp-2 text-sm text-dark-500 dark:text-dark-400">
           {pizza.descricao}
         </p>
-        {pizza.ingredientes.length > 0 && (
+        {pizza.ingredientes && pizza.ingredientes.length > 0 && (
           <div className="mt-3 flex flex-wrap gap-1">
             {pizza.ingredientes.slice(0, 3).map((ingrediente) => (
               <span
@@ -54,7 +52,11 @@ export default function PizzaCard({ pizza }: PizzaCardProps) {
         )}
         <div className="mt-4 flex items-center justify-between">
           <span className="text-xl font-bold text-primary-500">R$ {pizza.preco.toFixed(2)}</span>
-          <WAbizButton unidade="centro" utmContent={pizza.id} className="btn-primary text-sm">
+          <WAbizButton
+            unidade="centro"
+            utmContent={pizza.slug?.current}
+            className="btn-primary text-sm"
+          >
             Pedir
           </WAbizButton>
         </div>

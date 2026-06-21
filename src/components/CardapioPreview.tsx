@@ -1,8 +1,9 @@
 import Link from 'next/link';
-import cardapio from '@/data/cardapio.json';
+import { getPizzasDestaque } from '@/lib/data';
+import { urlForImage } from '@/lib/sanity';
 
-export default function CardapioPreview() {
-  const pizzasDestaque = cardapio.pizzas.filter((pizza) => pizza.destaque).slice(0, 4);
+export default async function CardapioPreview() {
+  const pizzas = await getPizzasDestaque();
 
   return (
     <section className="section-padding bg-white dark:bg-dark-950">
@@ -15,14 +16,23 @@ export default function CardapioPreview() {
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {pizzasDestaque.map((pizza) => (
+          {pizzas.map((pizza) => (
             <Link
-              key={pizza.id}
+              key={pizza._id}
               href="/cardapio"
               className="group card overflow-hidden transition-all hover:-translate-y-1"
             >
               <div className="aspect-square overflow-hidden rounded-lg bg-dark-100 dark:bg-dark-800">
-                <div className="flex h-full items-center justify-center text-4xl">🍕</div>
+                {pizza.imagem?.asset?._ref ? (
+                  <img
+                    src={urlForImage(pizza.imagem) || ''}
+                    alt={pizza.nome}
+                    className="h-full w-full object-cover transition-transform group-hover:scale-105"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="flex h-full items-center justify-center text-4xl">🍕</div>
+                )}
               </div>
               <div className="mt-4">
                 <h3 className="text-lg font-semibold text-dark-900 dark:text-white">

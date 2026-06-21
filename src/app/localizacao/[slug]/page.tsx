@@ -5,35 +5,53 @@ import Footer from '@/components/Footer';
 import Mapa from '@/components/Mapa';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import WAbizButton from '@/components/WAbizButton';
+import { getUnidades } from '@/lib/data';
 import { generateUnidadeMetadata, generateLocalBusinessSchema } from '@/lib/seo';
-import unidades from '@/data/unidades.json';
+import type {} from '@/lib/sanity-queries';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  return unidades.unidades.map((unidade) => ({
-    slug: unidade.slug,
+  const unidades = await getUnidades();
+  return unidades.map((unidade) => ({
+    slug: unidade.slug.current,
   }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const unidade = unidades.unidades.find((u) => u.slug === slug);
+  const unidades = await getUnidades();
+  const unidade = unidades.find((u) => u.slug.current === slug);
   if (!unidade) return {};
-  return generateUnidadeMetadata(unidade);
+  return generateUnidadeMetadata({
+    id: unidade._id,
+    nome: unidade.nome,
+    slug: unidade.slug.current,
+    endereco: unidade.endereco,
+    telefone: unidade.telefone,
+    mapa: unidade.mapa,
+  });
 }
 
 export default async function UnidadePage({ params }: PageProps) {
   const { slug } = await params;
-  const unidade = unidades.unidades.find((u) => u.slug === slug);
+  const unidades = await getUnidades();
+  const unidade = unidades.find((u) => u.slug.current === slug);
 
   if (!unidade) {
     notFound();
   }
 
-  const schema = generateLocalBusinessSchema(unidade);
+  const schema = generateLocalBusinessSchema({
+    id: unidade._id,
+    nome: unidade.nome,
+    slug: unidade.slug.current,
+    endereco: unidade.endereco,
+    telefone: unidade.telefone,
+    mapa: unidade.mapa,
+  });
 
   return (
     <>
@@ -50,7 +68,6 @@ export default async function UnidadePage({ params }: PageProps) {
           </div>
 
           <div className="grid gap-8 lg:grid-cols-2">
-            {/* Info */}
             <div className="space-y-6">
               <div className="card">
                 <h2 className="mb-4 text-xl font-semibold text-dark-900 dark:text-white">
@@ -68,7 +85,7 @@ export default async function UnidadePage({ params }: PageProps) {
                   Horário de Funcionamento
                 </h2>
                 <div className="space-y-2 text-sm">
-                  {Object.entries(unidade.horarios).map(([dia, horario]) => (
+                  {Object.entries(unidade.horarios || {}).map(([dia, horario]) => (
                     <div key={dia} className="flex justify-between">
                       <span className="capitalize text-dark-500 dark:text-dark-400">{dia}</span>
                       <span className="font-medium text-dark-900 dark:text-white">{horario}</span>
@@ -78,7 +95,7 @@ export default async function UnidadePage({ params }: PageProps) {
               </div>
 
               <div className="flex flex-wrap gap-3">
-                <WAbizButton unidade={unidade.slug} className="flex-1 justify-center">
+                <WAbizButton unidade={unidade.slug.current} className="flex-1 justify-center">
                   Pedir Agora
                 </WAbizButton>
                 <WhatsAppButton
@@ -91,12 +108,11 @@ export default async function UnidadePage({ params }: PageProps) {
               </div>
             </div>
 
-            {/* Mapa */}
             <div>
               <Mapa
                 endereco={unidade.endereco}
-                lat={unidade.mapa.lat}
-                lng={unidade.mapa.lng}
+                lat={unidade.mapa?.lat || -23.5505}
+                lng={unidade.mapa?.lng || -46.6333}
                 nome={unidade.nome}
               />
             </div>

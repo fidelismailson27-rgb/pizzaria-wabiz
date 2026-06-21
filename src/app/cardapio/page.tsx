@@ -2,18 +2,17 @@ import { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CardapioGrid from '@/components/CardapioGrid';
+import { getPizzas, getCategorias } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Cardápio',
   description:
     'Confira nosso cardápio completo de pizzas artesanais. Clássicas, especiais, doces e bebidas.',
-  openGraph: {
-    title: 'Cardápio | Pizzaria Premium',
-    description: 'Confira nosso cardápio completo de pizzas artesanais.',
-  },
 };
 
-export default function CardapioPage() {
+export default async function CardapioPage() {
+  const [pizzas, categorias] = await Promise.all([getPizzas(), getCategorias()]);
+
   return (
     <>
       <Header />
@@ -27,7 +26,7 @@ export default function CardapioPage() {
             </p>
           </div>
 
-          <CardapioGrid />
+          <CardapioGrid initialPizzas={pizzas} categorias={categorias} />
         </div>
       </main>
       <Footer />

@@ -1,7 +1,9 @@
 import Link from 'next/link';
-import unidades from '@/data/unidades.json';
+import { getUnidadesDestaque } from '@/lib/data';
 
-export default function LocalizacaoPreview() {
+export default async function LocalizacaoPreview() {
+  const unidades = await getUnidadesDestaque();
+
   return (
     <section className="section-padding bg-white dark:bg-dark-950">
       <div className="container-custom">
@@ -13,10 +15,10 @@ export default function LocalizacaoPreview() {
         </div>
 
         <div className="grid gap-8 md:grid-cols-3">
-          {unidades.unidades.map((unidade) => (
+          {unidades.map((unidade) => (
             <Link
-              key={unidade.id}
-              href={`/localizacao/${unidade.slug}`}
+              key={unidade._id}
+              href={`/localizacao/${unidade.slug.current}`}
               className="group card transition-all hover:-translate-y-1"
             >
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 text-primary-500 dark:bg-primary-900/20">
@@ -28,7 +30,7 @@ export default function LocalizacaoPreview() {
               <p className="mt-2 text-dark-500 dark:text-dark-400">{unidade.endereco}</p>
               <div className="mt-4 text-sm text-dark-400">
                 <p>📞 {unidade.telefone}</p>
-                <p className="mt-1">🕐 Seg-Sex: {unidade.horarios.sexta}</p>
+                <p className="mt-1">🕐 Seg-Sex: {unidade.horarios?.sexta || '18:00-01:00'}</p>
               </div>
               <div className="mt-4 text-sm font-medium text-primary-500 group-hover:underline">
                 Ver localização →

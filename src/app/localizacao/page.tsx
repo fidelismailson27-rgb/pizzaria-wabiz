@@ -2,19 +2,17 @@ import { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import UnidadeCard from '@/components/UnidadeCard';
-import unidades from '@/data/unidades.json';
+import { getUnidades } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Localização',
   description:
     'Encontre a Pizzaria Premium mais perto de você. 3 unidades atendendo toda a região.',
-  openGraph: {
-    title: 'Localização | Pizzaria Premium',
-    description: 'Encontre a Pizzaria Premium mais perto de você.',
-  },
 };
 
-export default function LocalizacaoPage() {
+export default async function LocalizacaoPage() {
+  const unidades = await getUnidades();
+
   return (
     <>
       <Header />
@@ -29,8 +27,8 @@ export default function LocalizacaoPage() {
           </div>
 
           <div className="grid gap-8 md:grid-cols-3">
-            {unidades.unidades.map((unidade) => (
-              <UnidadeCard key={unidade.id} unidade={unidade} />
+            {unidades.map((unidade) => (
+              <UnidadeCard key={unidade._id} unidade={unidade} />
             ))}
           </div>
         </div>
