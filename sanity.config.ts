@@ -5,7 +5,7 @@ import { schemas } from './sanity/schemas';
 export default defineConfig({
   name: 'pizzaria-wabiz',
   title: 'Pizzaria Premium',
-  projectId: 'gnepwp1u' || '',
+  projectId: 'gnepwp1u',
   dataset: 'production',
   plugins: [structureTool()],
   schema: {
