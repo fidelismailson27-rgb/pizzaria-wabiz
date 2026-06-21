@@ -36,13 +36,9 @@ export default function PizzaCard({ pizza }: PizzaCardProps) {
 
       {/* Content - 40% of card */}
       <div className="flex flex-1 flex-col p-4 sm:p-5">
-        <h3 className="text-base font-bold leading-tight text-white sm:text-lg">
-          {pizza.nome}
-        </h3>
+        <h3 className="text-base font-bold leading-tight text-white sm:text-lg">{pizza.nome}</h3>
 
-        <p className="mt-1 line-clamp-2 text-sm text-white/60">
-          {pizza.descricao}
-        </p>
+        <p className="mt-1 line-clamp-2 text-sm text-white/60">{pizza.descricao}</p>
 
         {pizza.ingredientes && pizza.ingredientes.length > 0 && (
           <div className="mt-2.5 flex flex-wrap gap-1.5">

@@ -16,7 +16,10 @@ export default async function CardapioPage() {
   return (
     <>
       <Header />
-      <main className="px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16" style={{ backgroundColor: '#0F1115' }}>
+      <main
+        className="px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16"
+        style={{ backgroundColor: '#0F1115' }}
+      >
         <div className="mx-auto max-w-6xl">
           <div className="mb-8 text-center sm:mb-12">
             <h1 className="heading-xl text-white">Nosso Cardápio</h1>

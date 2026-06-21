@@ -32,7 +32,9 @@ export default function CardapioGrid({ initialPizzas, categorias }: CardapioGrid
               key={categoria._id}
               onClick={() => setCategoriaAtiva(categoria.slug.current)}
               className={`glass-filter shrink-0 rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 ${
-                categoriaAtiva === categoria.slug.current ? 'active' : 'text-white/70 hover:text-white'
+                categoriaAtiva === categoria.slug.current
+                  ? 'active'
+                  : 'text-white/70 hover:text-white'
               }`}
             >
               {categoria.nome}

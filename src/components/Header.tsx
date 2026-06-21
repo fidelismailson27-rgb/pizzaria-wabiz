@@ -15,9 +15,7 @@ export default function Header() {
             className="rounded-lg object-cover"
             priority
           />
-          <span className="text-lg font-bold text-white">
-            Venerato
-          </span>
+          <span className="text-lg font-bold text-white">Venerato</span>
         </Link>
 
         <nav className="hidden items-center space-x-8 md:flex">

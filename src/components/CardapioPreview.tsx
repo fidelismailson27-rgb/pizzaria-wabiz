@@ -18,11 +18,7 @@ export default async function CardapioPreview() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {pizzas.map((pizza) => (
-            <Link
-              key={pizza._id}
-              href="/cardapio"
-              className="glass-card group overflow-hidden"
-            >
+            <Link key={pizza._id} href="/cardapio" className="glass-card group overflow-hidden">
               <div className="relative aspect-square overflow-hidden rounded-xl bg-dark-800">
                 {pizza.imagem?.asset?._ref ? (
                   <Image
@@ -39,19 +35,11 @@ export default async function CardapioPreview() {
                 )}
               </div>
               <div className="mt-4">
-                <h3 className="text-lg font-semibold text-white">
-                  {pizza.nome}
-                </h3>
-                <p className="mt-1 line-clamp-2 text-sm text-white/60">
-                  {pizza.descricao}
-                </p>
+                <h3 className="text-lg font-semibold text-white">{pizza.nome}</h3>
+                <p className="mt-1 line-clamp-2 text-sm text-white/60">{pizza.descricao}</p>
                 <div className="mt-3 flex items-center justify-between">
-                  <span className="text-lg font-bold text-accent">
-                    R$ {pizza.preco.toFixed(2)}
-                  </span>
-                  <span className="text-sm text-white/50 group-hover:text-accent">
-                    Ver mais →
-                  </span>
+                  <span className="text-lg font-bold text-accent">R$ {pizza.preco.toFixed(2)}</span>
+                  <span className="text-sm text-white/50 group-hover:text-accent">Ver mais →</span>
                 </div>
               </div>
             </Link>
