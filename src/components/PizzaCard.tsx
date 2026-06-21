@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { urlForImage } from '@/lib/sanity';
 import WAbizButton from './WAbizButton';
 import type { Pizza } from '@/lib/sanity-queries';
@@ -7,15 +8,18 @@ interface PizzaCardProps {
 }
 
 export default function PizzaCard({ pizza }: PizzaCardProps) {
+  const imageUrl = urlForImage(pizza.imagem);
+
   return (
-    <div className="group card overflow-hidden transition-all hover:-translate-y-1">
-      <div className="aspect-square overflow-hidden rounded-lg bg-dark-100 dark:bg-dark-800">
-        {pizza.imagem?.asset?._ref ? (
-          <img
-            src={urlForImage(pizza.imagem) || ''}
+    <div className="group card overflow-hidden transition-transform hover:-translate-y-1">
+      <div className="relative aspect-square overflow-hidden rounded-lg bg-dark-100 dark:bg-dark-800">
+        {imageUrl ? (
+          <Image
+            src={imageUrl}
             alt={pizza.nome}
-            className="h-full w-full object-cover transition-transform group-hover:scale-105"
-            loading="lazy"
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
         ) : (
           <div className="flex h-full items-center justify-center text-6xl">🍕</div>

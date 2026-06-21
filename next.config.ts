@@ -15,7 +15,7 @@ const securityHeaders = [
       "img-src 'self' https://maps.googleapis.com https://maps.gstatic.com https://cdn.sanity.io data: blob:",
       "font-src 'self'",
       "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.sanity.io",
-      "frame-src https://www.google.com https://maps.google.com",
+      'frame-src https://www.google.com https://maps.google.com',
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'",

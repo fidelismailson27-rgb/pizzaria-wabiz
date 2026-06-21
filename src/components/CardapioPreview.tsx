@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { getPizzasDestaque } from '@/lib/data';
 import { urlForImage } from '@/lib/sanity';
@@ -22,13 +23,14 @@ export default async function CardapioPreview() {
               href="/cardapio"
               className="group card overflow-hidden transition-all hover:-translate-y-1"
             >
-              <div className="aspect-square overflow-hidden rounded-lg bg-dark-100 dark:bg-dark-800">
+              <div className="relative aspect-square overflow-hidden rounded-lg bg-dark-100 dark:bg-dark-800">
                 {pizza.imagem?.asset?._ref ? (
-                  <img
+                  <Image
                     src={urlForImage(pizza.imagem) || ''}
                     alt={pizza.nome}
-                    className="h-full w-full object-cover transition-transform group-hover:scale-105"
-                    loading="lazy"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover transition-transform group-hover:scale-105"
                   />
                 ) : (
                   <div className="flex h-full items-center justify-center text-4xl">🍕</div>
