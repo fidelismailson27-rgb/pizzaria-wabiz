@@ -15,10 +15,13 @@
   },
   "dependencies": {
     "@sanity/client": "^7.23.0",
+    "@sanity/image-url": "^2.1.1",
+    "@sanity/vision": "^5.31.1",
     "next": "^15.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "sanity": "^6.1.0"
+    "sanity": "^5.31.1",
+    "styled-components": "^6.4.2"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^15.0.0",
