@@ -99,9 +99,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className="min-h-screen bg-white font-sans antialiased">
-        {children}
-      </body>
+      <body className="min-h-screen bg-white font-sans antialiased">{children}</body>
     </html>
   );
 }
