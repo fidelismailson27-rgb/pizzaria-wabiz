@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
-import WhatsAppFloat from '@/components/WhatsAppFloat';
 import './globals.css';
 
 const inter = Inter({
@@ -102,7 +101,6 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-white font-sans antialiased">
         {children}
-        <WhatsAppFloat telefone="5511999990001" nomeUnidade="Pizzaria Premium" />
       </body>
     </html>
   );
