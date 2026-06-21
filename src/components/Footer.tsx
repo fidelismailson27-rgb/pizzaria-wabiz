@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import InstagramFeed from './InstagramFeed';
 
 const footerLinks = {
@@ -14,22 +15,27 @@ const footerLinks = {
     { name: 'Contato', href: '/localizacao' },
   ],
   social: [
-    { name: 'Instagram', href: 'https://instagram.com/pizzariapremium', icon: 'instagram' },
-    { name: 'Facebook', href: 'https://facebook.com/pizzariapremium', icon: 'facebook' },
+    { name: 'Instagram', href: 'https://instagram.com/veneratopizzas', icon: 'instagram' },
+    { name: 'Facebook', href: 'https://facebook.com/veneratopizzas', icon: 'facebook' },
     { name: 'WhatsApp', href: 'https://wa.me/5511999990001', icon: 'whatsapp' },
   ],
 };
 
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-200 bg-dark-950 text-white">
+    <footer className="border-t border-white/10 bg-dark-950 text-white">
       <div className="container-custom py-12">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {/* Brand */}
           <div className="space-y-4">
-            <Link href="/" className="flex items-center space-x-2">
-              <span className="text-2xl">🍕</span>
-              <span className="font-display text-xl font-bold">Pizzaria Premium</span>
+            <Link href="/" className="flex items-center gap-3">
+              <Image
+                src="/brand/logo-venerato.jpg"
+                alt="Venerato Pizzas"
+                width={40}
+                height={40}
+                className="rounded-lg object-cover"
+              />
+              <span className="font-display text-xl font-bold">Venerato Pizzas</span>
             </Link>
             <p className="text-sm text-dark-300">
               A melhor pizza da cidade. Ingredientes selecionados e sabor incomparável.
@@ -37,9 +43,8 @@ export default function Footer() {
             <InstagramFeed />
           </div>
 
-          {/* Cardápio */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary-500">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary">
               Cardápio
             </h3>
             <ul className="space-y-2">
@@ -56,9 +61,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Institucional */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary-500">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary">
               Institucional
             </h3>
             <ul className="space-y-2">
@@ -75,15 +79,14 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contato */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary-500">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary">
               Contato
             </h3>
             <ul className="space-y-2 text-sm text-dark-300">
               <li>📍 Rua Augusta, 1234 - Consolação</li>
               <li>📞 +55 11 3256-1234</li>
-              <li>✉️ contato@pizzariapremium.com.br</li>
+              <li>✉️ contato@veneratopizzas.com.br</li>
             </ul>
             <div className="mt-4 flex space-x-4">
               {footerLinks.social.map((link) => (
@@ -92,7 +95,7 @@ export default function Footer() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-dark-300 transition-colors hover:text-primary-500"
+                  className="text-dark-300 transition-colors hover:text-primary"
                   aria-label={link.name}
                 >
                   {link.icon === 'instagram' && (
@@ -117,14 +120,14 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 border-t border-dark-800 pt-8 text-center text-sm text-dark-400">
-          <p>© {new Date().getFullYear()} Pizzaria Premium. Todos os direitos reservados.</p>
+          <p>© {new Date().getFullYear()} Venerato Pizzas. Todos os direitos reservados.</p>
           <p className="mt-1">
             Peça pela{' '}
             <a
               href="https://wabiz.com.br"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary-500 hover:underline"
+              className="text-primary hover:underline"
             >
               WAbiz
             </a>

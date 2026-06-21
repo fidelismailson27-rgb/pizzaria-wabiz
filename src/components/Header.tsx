@@ -1,37 +1,46 @@
 import Link from 'next/link';
+import Image from 'next/image';
+import Navbar from './Navbar';
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:bg-dark-950/95 dark:supports-[backdrop-filter]:bg-dark-950/60">
+    <header className="glass-header">
       <div className="container-custom flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center space-x-2">
-          <span className="text-2xl font-bold text-primary-500">🍕</span>
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/brand/logo-venerato.jpg"
+            alt="Venerato Pizzas"
+            width={40}
+            height={40}
+            className="rounded-lg object-cover"
+            priority
+          />
           <span className="font-display text-xl font-bold text-dark-950 dark:text-white">
-            Pizzaria Premium
+            Venerato Pizzas
           </span>
         </Link>
 
         <nav className="hidden items-center space-x-8 md:flex">
           <Link
             href="/cardapio"
-            className="text-sm font-medium text-dark-600 transition-colors hover:text-primary-500 dark:text-dark-300"
+            className="text-sm font-medium text-dark-600 transition-colors hover:text-primary dark:text-dark-300"
           >
             Cardápio
           </Link>
           <Link
             href="/localizacao"
-            className="text-sm font-medium text-dark-600 transition-colors hover:text-primary-500 dark:text-dark-300"
+            className="text-sm font-medium text-dark-600 transition-colors hover:text-primary dark:text-dark-300"
           >
             Localização
           </Link>
           <Link
             href="/sobre"
-            className="text-sm font-medium text-dark-600 transition-colors hover:text-primary-500 dark:text-dark-300"
+            className="text-sm font-medium text-dark-600 transition-colors hover:text-primary dark:text-dark-300"
           >
             Sobre
           </Link>
           <a
-            href="https://wabiz.com.br/pizzaria-premium"
+            href="https://wabiz.com.br/venerato-pizzas"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary"
@@ -39,6 +48,8 @@ export default function Header() {
             Pedir Agora
           </a>
         </nav>
+
+        <Navbar />
       </div>
     </header>
   );

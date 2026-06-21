@@ -7,9 +7,9 @@ import SobrePreview from '@/components/SobrePreview';
 import LocalizacaoPreview from '@/components/LocalizacaoPreview';
 
 export const metadata: Metadata = {
-  title: 'Pizzaria Premium | A Melhor Pizza da Cidade',
+  title: 'Venerato Pizzas | A Melhor Pizza da Cidade',
   description:
-    'Descubra a experiência única da nossa pizzaria. Pizzas artesanais com ingredientes selecionados. Peça agora pela WAbiz!',
+    'Descubra a experiência única da Venerato Pizzas. Pizzas artesanais com ingredientes selecionados. Peça agora pela WAbiz!',
 };
 
 export default function Home() {

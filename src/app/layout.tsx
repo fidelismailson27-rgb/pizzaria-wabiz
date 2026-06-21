@@ -17,47 +17,55 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Pizzaria Premium | A Melhor Pizza da Cidade',
-    template: '%s | Pizzaria Premium',
+    default: 'Venerato Pizzas | A Melhor Pizza da Cidade',
+    template: '%s | Venerato Pizzas',
   },
   description:
-    'Descubra a experiência única da nossa pizzaria. Pizzas artesanais com ingredientes selecionados. Peça agora pela WAbiz!',
-  keywords: ['pizzaria', 'pizza', 'pizza artesanal', 'melhor pizza', 'delivery', 'WAbiz'],
-  authors: [{ name: 'Pizzaria Premium' }],
-  creator: 'Pizzaria Premium',
-  publisher: 'Pizzaria Premium',
+    'Descubra a experiência única da Venerato Pizzas. Pizzas artesanais com ingredientes selecionados. Peça agora pela WAbiz!',
+  keywords: [
+    'pizzaria',
+    'pizza',
+    'pizza artesanal',
+    'melhor pizza',
+    'delivery',
+    'Venerato',
+    'WAbiz',
+  ],
+  authors: [{ name: 'Venerato Pizzas' }],
+  creator: 'Venerato Pizzas',
+  publisher: 'Venerato Pizzas',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://pizzaria-wabiz.vercel.app'),
+  metadataBase: new URL('https://venerato-pizzas.vercel.app'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
-    url: 'https://pizzaria-wabiz.vercel.app',
-    siteName: 'Pizzaria Premium',
-    title: 'Pizzaria Premium | A Melhor Pizza da Cidade',
+    url: 'https://venerato-pizzas.vercel.app',
+    siteName: 'Venerato Pizzas',
+    title: 'Venerato Pizzas | A Melhor Pizza da Cidade',
     description:
-      'Descubra a experiência única da nossa pizzaria. Pizzas artesanais com ingredientes selecionados.',
+      'Descubra a experiência única da Venerato Pizzas. Pizzas artesanais com ingredientes selecionados.',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/brand/logo-venerato.jpg',
         width: 1200,
         height: 630,
-        alt: 'Pizzaria Premium',
+        alt: 'Venerato Pizzas',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Pizzaria Premium | A Melhor Pizza da Cidade',
+    title: 'Venerato Pizzas | A Melhor Pizza da Cidade',
     description:
-      'Descubra a experiência única da nossa pizzaria. Pizzas artesanais com ingredientes selecionados.',
-    images: ['/og-image.jpg'],
+      'Descubra a experiência única da Venerato Pizzas. Pizzas artesanais com ingredientes selecionados.',
+    images: ['/brand/logo-venerato.jpg'],
   },
   robots: {
     index: true,
@@ -71,17 +79,17 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/icons/favicon-16x16.png',
-    apple: '/icons/apple-touch-icon.png',
+    icon: '/brand/logo-venerato.jpg',
+    shortcut: '/brand/logo-venerato.jpg',
+    apple: '/brand/logo-venerato.jpg',
   },
   manifest: '/manifest.json',
 };
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#f09332' },
-    { media: '(prefers-color-scheme: dark)', color: '#1a1a1a' },
+    { media: '(prefers-color-scheme: light)', color: '#008060' },
+    { media: '(prefers-color-scheme: dark)', color: '#121212' },
   ],
   width: 'device-width',
   initialScale: 1,
@@ -97,7 +105,7 @@ export default function RootLayout({
     <html lang="pt-BR" className={`${inter.variable} ${playfair.variable}`}>
       <body className="min-h-screen bg-white font-sans antialiased">
         {children}
-        <WhatsAppFloat telefone="5511999990001" nomeUnidade="Pizzaria Premium" />
+        <WhatsAppFloat telefone="5511999990001" nomeUnidade="Venerato Pizzas" />
       </body>
     </html>
   );

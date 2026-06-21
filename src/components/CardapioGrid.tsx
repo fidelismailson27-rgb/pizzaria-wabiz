@@ -24,16 +24,15 @@ export default function CardapioGrid({ initialPizzas, categorias }: CardapioGrid
 
   return (
     <div>
-      {/* Filtros de categoria */}
-      <div className="mb-6 flex flex-wrap justify-center gap-2 sm:mb-8">
+      <div className="mb-8 flex flex-wrap justify-center gap-2 sm:mb-10">
         {categoriasComTodas.map((categoria) => (
           <button
             key={categoria._id}
             onClick={() => setCategoriaAtiva(categoria.slug.current)}
-            className={`min-h-[40px] rounded-full px-3 py-2 text-xs font-medium transition-colors sm:px-4 sm:text-sm ${
+            className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
               categoriaAtiva === categoria.slug.current
-                ? 'bg-primary-500 text-white shadow-md'
-                : 'bg-dark-100 text-dark-600 hover:bg-dark-200 dark:bg-dark-800 dark:text-dark-300 dark:hover:bg-dark-700'
+                ? 'bg-primary text-white shadow-lg shadow-primary/30'
+                : 'bg-white/60 text-dark-600 backdrop-blur-sm hover:bg-primary/10 hover:text-primary dark:bg-white/5 dark:text-dark-300 dark:hover:bg-primary/10'
             }`}
           >
             {categoria.nome}
@@ -41,16 +40,21 @@ export default function CardapioGrid({ initialPizzas, categorias }: CardapioGrid
         ))}
       </div>
 
-      {/* Grid: 1 col mobile, 2 tablet, 3 desktop */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
-        {pizzasFiltradas.map((pizza) => (
-          <PizzaCard key={pizza._id} pizza={pizza} />
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-7">
+        {pizzasFiltradas.map((pizza, index) => (
+          <div
+            key={pizza._id}
+            className="animate-slide-up"
+            style={{ animationDelay: `${index * 0.05}s` }}
+          >
+            <PizzaCard pizza={pizza} />
+          </div>
         ))}
       </div>
 
       {pizzasFiltradas.length === 0 && (
-        <div className="py-12 text-center text-dark-500">
-          Nenhuma pizza encontrada nesta categoria.
+        <div className="py-16 text-center text-dark-500">
+          <p className="text-lg">Nenhuma pizza encontrada nesta categoria.</p>
         </div>
       )}
     </div>

@@ -10,7 +10,7 @@ export default function Navbar() {
     <div className="md:hidden">
       <button
         type="button"
-        className="inline-flex items-center justify-center rounded-md p-2 text-dark-600 hover:text-primary-500"
+        className="inline-flex items-center justify-center rounded-lg p-2 text-dark-600 transition-colors hover:bg-primary/10 hover:text-primary"
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-label="Menu de navegação"
@@ -37,32 +37,32 @@ export default function Navbar() {
       </button>
 
       {isOpen && (
-        <div className="absolute left-0 right-0 top-16 border-b border-gray-200 bg-white shadow-lg dark:bg-dark-950">
+        <div className="absolute left-0 right-0 top-16 border-b border-white/20 bg-white/90 shadow-lg backdrop-blur-xl dark:bg-dark-950/90">
           <nav className="container-custom space-y-1 py-4">
             <Link
               href="/cardapio"
-              className="block rounded-lg px-4 py-2 text-base font-medium text-dark-600 transition-colors hover:bg-primary-50 hover:text-primary-500 dark:text-dark-300 dark:hover:bg-dark-900"
+              className="block rounded-xl px-4 py-3 text-base font-medium text-dark-600 transition-all hover:bg-primary/10 hover:text-primary dark:text-dark-300"
               onClick={() => setIsOpen(false)}
             >
               Cardápio
             </Link>
             <Link
               href="/localizacao"
-              className="block rounded-lg px-4 py-2 text-base font-medium text-dark-600 transition-colors hover:bg-primary-50 hover:text-primary-500 dark:text-dark-300 dark:hover:bg-dark-900"
+              className="block rounded-xl px-4 py-3 text-base font-medium text-dark-600 transition-all hover:bg-primary/10 hover:text-primary dark:text-dark-300"
               onClick={() => setIsOpen(false)}
             >
               Localização
             </Link>
             <Link
               href="/sobre"
-              className="block rounded-lg px-4 py-2 text-base font-medium text-dark-600 transition-colors hover:bg-primary-50 hover:text-primary-500 dark:text-dark-300 dark:hover:bg-dark-900"
+              className="block rounded-xl px-4 py-3 text-base font-medium text-dark-600 transition-all hover:bg-primary/10 hover:text-primary dark:text-dark-300"
               onClick={() => setIsOpen(false)}
             >
               Sobre
             </Link>
             <div className="pt-2">
               <a
-                href="https://wabiz.com.br/pizzaria-premium"
+                href="https://wabiz.com.br/venerato-pizzas"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full text-center btn-primary"
