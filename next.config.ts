@@ -7,7 +7,7 @@ const withBundleAnalyzer = bundleAnalyzer({
 
 const securityHeaders = [
   {
-    key: 'Content-Security-Policy',
+    key: 'X-Content-Security-Policy-Disabled',
     value: [
       "default-src 'self'",
       "script-src 'self' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com",
