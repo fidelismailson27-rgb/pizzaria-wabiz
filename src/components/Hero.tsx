@@ -46,14 +46,7 @@ export default function Hero() {
             index === currentSlide ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <div className="flex h-full items-center justify-center bg-gradient-to-br from-dark-950/80 to-dark-950/60">
-            <div className="container-custom text-center text-white">
-              <h1 className="heading-xl mb-4 animate-fade-in">{slide.title}</h1>
-              <p className="mb-8 text-lg text-dark-200 animate-fade-in md:text-xl">
-                {slide.subtitle}
-              </p>
-            </div>
-          </div>
+          <div className="h-full bg-gradient-to-br from-dark-950/80 to-dark-950/60" />
         </div>
       ))}
 
