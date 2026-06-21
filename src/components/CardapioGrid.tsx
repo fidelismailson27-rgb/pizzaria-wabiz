@@ -24,14 +24,15 @@ export default function CardapioGrid({ initialPizzas, categorias }: CardapioGrid
 
   return (
     <div>
-      <div className="mb-8 flex flex-wrap justify-center gap-2">
+      {/* Filtros de categoria */}
+      <div className="mb-6 flex flex-wrap justify-center gap-2 sm:mb-8">
         {categoriasComTodas.map((categoria) => (
           <button
             key={categoria._id}
             onClick={() => setCategoriaAtiva(categoria.slug.current)}
-            className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+            className={`min-h-[40px] rounded-full px-3 py-2 text-xs font-medium transition-colors sm:px-4 sm:text-sm ${
               categoriaAtiva === categoria.slug.current
-                ? 'bg-primary-500 text-white'
+                ? 'bg-primary-500 text-white shadow-md'
                 : 'bg-dark-100 text-dark-600 hover:bg-dark-200 dark:bg-dark-800 dark:text-dark-300 dark:hover:bg-dark-700'
             }`}
           >
@@ -40,7 +41,8 @@ export default function CardapioGrid({ initialPizzas, categorias }: CardapioGrid
         ))}
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {/* Grid: 1 col mobile, 2 tablet, 3 desktop */}
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
         {pizzasFiltradas.map((pizza) => (
           <PizzaCard key={pizza._id} pizza={pizza} />
         ))}
