@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css}\"",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css}\" \"sanity/**/*.{ts,tsx,js,json}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css}\" \"sanity/**/*.{ts,tsx,js,json}\"",
     "analyze": "ANALYZE=true next build",
     "test": "echo \"No tests yet\""
   },
