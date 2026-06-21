@@ -10,8 +10,8 @@ const securityHeaders = [
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com",
-      "style-src 'self' 'unsafe-inline'",
+      "script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com",
+      "style-src 'self'",
       "img-src 'self' https://maps.googleapis.com https://maps.gstatic.com data: blob:",
       "font-src 'self'",
       "connect-src 'self' https://www.google-analytics.com https://analytics.google.com",
@@ -49,6 +49,9 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  experimental: {
+    sri: { algorithm: 'sha256' },
+  },
   output: 'standalone',
   reactStrictMode: true,
   images: {
