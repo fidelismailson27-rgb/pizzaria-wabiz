@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import Hero from '@/components/Hero';
 import CardapioPreview from '@/components/CardapioPreview';
 import SobrePreview from '@/components/SobrePreview';
 import LocalizacaoPreview from '@/components/LocalizacaoPreview';
