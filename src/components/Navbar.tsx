@@ -37,7 +37,7 @@ export default function Navbar() {
       </button>
 
       {isOpen && (
-        <div className="absolute left-0 right-0 top-16 border-b border-border bg-white shadow-lg dark:bg-dark-950">
+        <div className="absolute left-0 right-0 top-16 border-b border-gray-200 bg-white shadow-lg dark:bg-dark-950">
           <nav className="container-custom space-y-1 py-4">
             <Link
               href="/cardapio"

@@ -20,7 +20,7 @@ export default function UnidadeSelector({ unidadeAtual }: UnidadeSelectorProps) 
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-2 rounded-lg border border-border bg-white px-4 py-2 text-sm font-medium text-dark-900 transition-colors hover:border-primary-500 dark:border-dark-700 dark:bg-dark-900 dark:text-white"
+        className="flex items-center space-x-2 rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-dark-900 transition-colors hover:border-primary-500 dark:border-dark-700 dark:bg-dark-900 dark:text-white"
         aria-expanded={isOpen}
         aria-haspopup="listbox"
       >
@@ -38,7 +38,7 @@ export default function UnidadeSelector({ unidadeAtual }: UnidadeSelectorProps) 
 
       {isOpen && (
         <div
-          className="absolute left-0 top-full z-50 mt-2 w-64 rounded-lg border border-border bg-white shadow-lg dark:border-dark-700 dark:bg-dark-900"
+          className="absolute left-0 top-full z-50 mt-2 w-64 rounded-lg border border-gray-200 bg-white shadow-lg dark:border-dark-700 dark:bg-dark-900"
           role="listbox"
         >
           {unidades.unidades.map((unidade) => (

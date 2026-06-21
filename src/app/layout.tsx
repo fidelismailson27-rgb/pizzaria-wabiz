@@ -100,7 +100,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className="min-h-screen bg-background font-sans antialiased">
+      <body className="min-h-screen bg-white font-sans antialiased">
         {children}
         <WhatsAppFloat telefone="5511999990001" nomeUnidade="Pizzaria Premium" />
       </body>

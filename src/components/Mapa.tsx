@@ -13,7 +13,7 @@ export default function Mapa({ endereco, lat, lng, nome }: MapaProps) {
   const mapsUrl = generateGoogleMapsLink(endereco);
 
   return (
-    <div className="overflow-hidden rounded-xl border border-border bg-white shadow-lg dark:border-dark-700 dark:bg-dark-900">
+    <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg dark:border-dark-700 dark:bg-dark-900">
       {/* Map embed */}
       <div className="relative aspect-video bg-dark-100 dark:bg-dark-800">
         <iframe

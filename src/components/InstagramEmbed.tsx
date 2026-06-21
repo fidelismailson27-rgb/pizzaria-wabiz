@@ -2,7 +2,7 @@
 
 export default function InstagramEmbed() {
   return (
-    <div className="overflow-hidden rounded-xl border border-border bg-white shadow-lg dark:border-dark-700 dark:bg-dark-900">
+    <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg dark:border-dark-700 dark:bg-dark-900">
       <div className="p-4">
         <div className="flex items-center space-x-3">
           <div className="h-10 w-10 rounded-full bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 p-0.5">
