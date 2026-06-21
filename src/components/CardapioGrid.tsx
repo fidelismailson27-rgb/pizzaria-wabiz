@@ -7,10 +7,7 @@ import PizzaCard from './PizzaCard';
 export default function CardapioGrid() {
   const [categoriaAtiva, setCategoriaAtiva] = useState('todas');
 
-  const categorias = [
-    { id: 'todas', nome: 'Todas' },
-    ...cardapio.categorias,
-  ];
+  const categorias = [{ id: 'todas', nome: 'Todas' }, ...cardapio.categorias];
 
   const pizzasFiltradas =
     categoriaAtiva === 'todas'

@@ -1,7 +1,5 @@
 'use client';
 
-
-
 export default function InstagramEmbed() {
   return (
     <div className="overflow-hidden rounded-xl border border-border bg-white shadow-lg dark:border-dark-700 dark:bg-dark-900">

@@ -7,7 +7,10 @@ interface InstagramFeedProps {
   maxPosts?: number;
 }
 
-export default function InstagramFeed({ usuario = '@pizzariapremium', maxPosts = 4 }: InstagramFeedProps) {
+export default function InstagramFeed({
+  usuario = '@pizzariapremium',
+  maxPosts = 4,
+}: InstagramFeedProps) {
   const posts = Array.from({ length: maxPosts }, (_, i) => ({
     id: i + 1,
     image: `/images/instagram/post-${i + 1}.jpg`,

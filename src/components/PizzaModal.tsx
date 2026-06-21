@@ -26,10 +26,7 @@ export default function PizzaModal({ pizza, isOpen, onClose }: PizzaModalProps) 
   return (
     <Fragment>
       {/* Backdrop */}
-      <div
-        className="fixed inset-0 z-50 bg-black/50 transition-opacity"
-        onClick={onClose}
-      />
+      <div className="fixed inset-0 z-50 bg-black/50 transition-opacity" onClick={onClose} />
 
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -44,7 +41,12 @@ export default function PizzaModal({ pizza, isOpen, onClose }: PizzaModalProps) 
             aria-label="Fechar"
           >
             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           </button>
 
@@ -57,7 +59,9 @@ export default function PizzaModal({ pizza, isOpen, onClose }: PizzaModalProps) 
           <div>
             <div className="flex items-start justify-between">
               <h2 className="text-2xl font-bold text-dark-900 dark:text-white">{pizza.nome}</h2>
-              <span className="text-2xl font-bold text-primary-500">R$ {pizza.preco.toFixed(2)}</span>
+              <span className="text-2xl font-bold text-primary-500">
+                R$ {pizza.preco.toFixed(2)}
+              </span>
             </div>
             <p className="mt-2 text-dark-600 dark:text-dark-300">{pizza.descricao}</p>
 
@@ -80,11 +84,7 @@ export default function PizzaModal({ pizza, isOpen, onClose }: PizzaModalProps) 
             )}
 
             <div className="mt-6">
-              <WAbizButton
-                unidade="centro"
-                utmContent={pizza.id}
-                className="w-full justify-center"
-              >
+              <WAbizButton unidade="centro" utmContent={pizza.id} className="w-full justify-center">
                 Pedir Esta Pizza
               </WAbizButton>
             </div>

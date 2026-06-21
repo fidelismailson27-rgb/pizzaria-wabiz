@@ -2,7 +2,6 @@ import Link from 'next/link';
 import unidades from '@/data/unidades.json';
 
 export default function LocalizacaoPreview() {
-
   return (
     <section className="section-padding bg-white dark:bg-dark-950">
       <div className="container-custom">
@@ -29,9 +28,7 @@ export default function LocalizacaoPreview() {
               <p className="mt-2 text-dark-500 dark:text-dark-400">{unidade.endereco}</p>
               <div className="mt-4 text-sm text-dark-400">
                 <p>📞 {unidade.telefone}</p>
-                <p className="mt-1">
-                  🕐 Seg-Sex: {unidade.horarios.sexta}
-                </p>
+                <p className="mt-1">🕐 Seg-Sex: {unidade.horarios.sexta}</p>
               </div>
               <div className="mt-4 text-sm font-medium text-primary-500 group-hover:underline">
                 Ver localização →

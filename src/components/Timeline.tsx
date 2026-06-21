@@ -17,7 +17,8 @@ const timeline = [
   {
     year: '2019',
     title: 'Nova Unidade',
-    description: 'Abertura da terceira unidade em Campinas, consolidando nossa presença no interior.',
+    description:
+      'Abertura da terceira unidade em Campinas, consolidando nossa presença no interior.',
   },
   {
     year: '2022',

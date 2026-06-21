@@ -10,7 +10,8 @@ interface UnidadeSelectorProps {
 
 export default function UnidadeSelector({ unidadeAtual }: UnidadeSelectorProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const unidadeSelecionada = unidades.unidades.find((u) => u.slug === unidadeAtual) || unidades.unidades[0];
+  const unidadeSelecionada =
+    unidades.unidades.find((u) => u.slug === unidadeAtual) || unidades.unidades[0];
 
   if (!unidadeSelecionada) return null;
 
@@ -45,7 +46,9 @@ export default function UnidadeSelector({ unidadeAtual }: UnidadeSelectorProps) 
               key={unidade.id}
               href={`/localizacao/${unidade.slug}`}
               className={`flex items-center space-x-3 px-4 py-3 text-sm transition-colors hover:bg-primary-50 dark:hover:bg-dark-800 ${
-                unidade.slug === unidadeAtual ? 'bg-primary-50 text-primary-500 dark:bg-dark-800' : ''
+                unidade.slug === unidadeAtual
+                  ? 'bg-primary-50 text-primary-500 dark:bg-dark-800'
+                  : ''
               }`}
               role="option"
               aria-selected={unidade.slug === unidadeAtual}

@@ -54,11 +54,7 @@ export default function PizzaCard({ pizza }: PizzaCardProps) {
         )}
         <div className="mt-4 flex items-center justify-between">
           <span className="text-xl font-bold text-primary-500">R$ {pizza.preco.toFixed(2)}</span>
-          <WAbizButton
-            unidade="centro"
-            utmContent={pizza.id}
-            className="btn-primary text-sm"
-          >
+          <WAbizButton unidade="centro" utmContent={pizza.id} className="btn-primary text-sm">
             Pedir
           </WAbizButton>
         </div>
