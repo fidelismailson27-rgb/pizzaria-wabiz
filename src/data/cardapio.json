@@ -1,0 +1,140 @@
+{
+  "categorias": [
+    { "id": "classica", "nome": "Clássicas", "descricao": "As pizzas tradicionais que todo mundo ama" },
+    { "id": "especial", "nome": "Especiais", "descricao": "Crições exclusivas do nosso chef" },
+    { "id": "doce", "nome": "Doces", "descricao": "Sobremesas irresistíveis" },
+    { "id": "bebida", "nome": "Bebidas", "descricao": "Para acompanhar sua pizza" }
+  ],
+  "pizzas": [
+    {
+      "id": "margherita",
+      "nome": "Margherita",
+      "descricao": "Molho de tomate artesanal, muçarela de búfala, manjericão fresco e azeite extra virgem",
+      "preco": 49.90,
+      "categoria": "classica",
+      "imagem": "/images/pizzas/margherita.jpg",
+      "ingredientes": ["molho de tomate", "muçarela de búfala", "manjericão", "azeite"],
+      "destaque": true
+    },
+    {
+      "id": "pepperoni",
+      "nome": "Pepperoni",
+      "descricao": "Muçarela derretida com pepperoni importado e orégano",
+      "preco": 54.90,
+      "categoria": "classica",
+      "imagem": "/images/pizzas/pepperoni.jpg",
+      "ingredientes": ["muçarela", "pepperoni", "orégano"],
+      "destaque": true
+    },
+    {
+      "id": "quatro-queijos",
+      "nome": "Quatro Queijos",
+      "descricao": "Blend exclusivo de muçarela, gorgonzola, parmesão e provolone",
+      "preco": 59.90,
+      "categoria": "classica",
+      "imagem": "/images/pizzas/quatro-queijos.jpg",
+      "ingredientes": ["muçarela", "gorgonzola", "parmesão", "provolone"],
+      "destaque": false
+    },
+    {
+      "id": "calabresa",
+      "nome": "Calabresa",
+      "descricao": "Calabresa artesanal defumada com cebola roxa e azeitonas",
+      "preco": 47.90,
+      "categoria": "classica",
+      "imagem": "/images/pizzas/calabresa.jpg",
+      "ingredientes": ["calabresa", "cebola", "azeitona"],
+      "destaque": false
+    },
+    {
+      "id": "trufada",
+      "nome": "Trufada",
+      "descricao": "Creme de trufas negras, muçarela, parmesão e rúcula",
+      "preco": 79.90,
+      "categoria": "especial",
+      "imagem": "/images/pizzas/trufada.jpg",
+      "ingredientes": ["creme de trufas", "muçarela", "parmesão", "rúcula"],
+      "destaque": true
+    },
+    {
+      "id": "lobster",
+      "nome": "Lobster",
+      "descricao": "Lagosta grelhada, muçarela, tomate cereja e pesto de manjericão",
+      "preco": 129.90,
+      "categoria": "especial",
+      "imagem": "/images/pizzas/lobster.jpg",
+      "ingredientes": ["lagosta", "muçarela", "tomate cereja", "pesto"],
+      "destaque": true
+    },
+    {
+      "id": "figueira",
+      "nome": "Figueira",
+      "descricao": "Figos caramelizados, queijo brie, nozes e mel trufado",
+      "preco": 69.90,
+      "categoria": "especial",
+      "imagem": "/images/pizzas/figueira.jpg",
+      "ingredientes": ["figo", "queijo brie", "nozes", "mel"],
+      "destaque": false
+    },
+    {
+      "id": "nutella",
+      "nome": "Nutella",
+      "descricao": "Nutella cremosa com morangos frescos e granulado belga",
+      "preco": 59.90,
+      "categoria": "doce",
+      "imagem": "/images/pizzas/nutella.jpg",
+      "ingredientes": ["nutella", "morango", "granulado"],
+      "destaque": true
+    },
+    {
+      "id": "romeu-julieta",
+      "nome": "Romeu e Julieta",
+      "descricao": "Goiabada cascão com queijo minas derretido",
+      "preco": 49.90,
+      "categoria": "doce",
+      "imagem": "/images/pizzas/romeu-julieta.jpg",
+      "ingredientes": ["goiabada", "queijo minas"],
+      "destaque": false
+    },
+    {
+      "id": "chocolate-branco",
+      "nome": "Chocolate Branco",
+      "descricao": "Chocolate branco com frutas vermelhas e raspas de limão",
+      "preco": 54.90,
+      "categoria": "doce",
+      "imagem": "/images/pizzas/chocolate-branco.jpg",
+      "ingredientes": ["chocolate branco", "frutas vermelhas", "limão"],
+      "destaque": false
+    },
+    {
+      "id": "guarana",
+      "nome": "Guaraná Antarctica",
+      "descricao": "Lata 350ml - O clássico brasileiro",
+      "preco": 8.90,
+      "categoria": "bebida",
+      "imagem": "/images/bebidas/guarana.jpg",
+      "ingredientes": [],
+      "destaque": false
+    },
+    {
+      "id": "coca-cola",
+      "nome": "Coca-Cola",
+      "descricao": "Lata 350ml - Refrescante e gelada",
+      "preco": 9.90,
+      "categoria": "bebida",
+      "imagem": "/images/bebidas/coca-cola.jpg",
+      "ingredientes": [],
+      "destaque": false
+    },
+    {
+      "id": "craft-ipa",
+      "nome": "IPA Artesanal",
+      "descricao": "Cerveja artesanal local - 500ml",
+      "preco": 29.90,
+      "categoria": "bebida",
+      "imagem": "/images/bebidas/ipa.jpg",
+      "ingredientes": [],
+      "destaque": true
+    }
+  ]
+}
