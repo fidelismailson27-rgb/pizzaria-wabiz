@@ -2,21 +2,20 @@
 
 import { generateInstagramLink } from '@/lib/wabiz';
 
+const POSTS_DATA = [
+  { id: 1, image: '/images/instagram/post-1.jpg', likes: 342 },
+  { id: 2, image: '/images/instagram/post-2.jpg', likes: 218 },
+  { id: 3, image: '/images/instagram/post-3.jpg', likes: 456 },
+  { id: 4, image: '/images/instagram/post-4.jpg', likes: 189 },
+];
+
 interface InstagramFeedProps {
   usuario?: string;
-  maxPosts?: number;
 }
 
 export default function InstagramFeed({
   usuario = '@pizzariapremium',
-  maxPosts = 4,
 }: InstagramFeedProps) {
-  const posts = Array.from({ length: maxPosts }, (_, i) => ({
-    id: i + 1,
-    image: `/images/instagram/post-${i + 1}.jpg`,
-    likes: Math.floor(Math.random() * 500) + 100,
-  }));
-
   return (
     <div className="space-y-3">
       <a
@@ -28,7 +27,7 @@ export default function InstagramFeed({
         {usuario}
       </a>
       <div className="grid grid-cols-2 gap-2">
-        {posts.map((post) => (
+        {POSTS_DATA.map((post) => (
           <a
             key={post.id}
             href={generateInstagramLink(usuario)}

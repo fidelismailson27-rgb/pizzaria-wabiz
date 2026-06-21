@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
+import WhatsAppFloat from '@/components/WhatsAppFloat';
 import './globals.css';
 
 const inter = Inter({
@@ -70,7 +71,7 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/icons/favicon.ico',
+    icon: '/favicon.ico',
     shortcut: '/icons/favicon-16x16.png',
     apple: '/icons/apple-touch-icon.png',
   },
@@ -94,12 +95,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${playfair.variable}`}>
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
-      </head>
-      <body className="min-h-screen bg-white font-sans antialiased">{children}</body>
+      <body className="min-h-screen bg-white font-sans antialiased">
+        {children}
+        <WhatsAppFloat telefone="5511999990001" nomeUnidade="Pizzaria Premium" />
+      </body>
     </html>
   );
 }
