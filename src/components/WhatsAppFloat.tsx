@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { generateWhatsAppLink, getWhatsAppMensagemUnidade } from '@/lib/wabiz';
+import { generateWhatsAppLink } from '@/lib/wabiz';
 
 interface WhatsAppFloatProps {
   telefone: string;
@@ -24,7 +24,8 @@ export default function WhatsAppFloat({
 
   if (!isVisible) return null;
 
-  const link = generateWhatsAppLink(telefone, getWhatsAppMensagemUnidade(nomeUnidade));
+  const mensagem = `Olá! Gostaria de fazer um pedido na ${nomeUnidade}. Podem me ajudar?`;
+  const link = generateWhatsAppLink(telefone, mensagem);
 
   return (
     <a

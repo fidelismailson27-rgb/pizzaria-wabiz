@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { generateWAbizLink, UTM_CONFIG } from '@/lib/wabiz';
 
 export default function PromoBanner() {
   return (
@@ -28,13 +27,7 @@ export default function PromoBanner() {
               R$ 60,99
             </span>
             <a
-              href={generateWAbizLink({
-                unidade: 'centro',
-                utmSource: UTM_CONFIG.source,
-                utmMedium: UTM_CONFIG.medium,
-                utmCampaign: UTM_CONFIG.campaign,
-                utmContent: 'promo_dia',
-              })}
+              href="https://veneratopizzas.wabiz.delivery/"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-2xl bg-white px-8 py-4 text-base font-bold text-red-600 shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl active:scale-95 sm:px-10 sm:text-lg"

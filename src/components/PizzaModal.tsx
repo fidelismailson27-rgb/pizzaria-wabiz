@@ -82,9 +82,7 @@ export default function PizzaModal({ pizza, isOpen, onClose }: PizzaModalProps) 
             )}
 
             <div className="mt-6">
-              <WAbizButton unidade="centro" utmContent={pizza.id} className="w-full justify-center">
-                Pedir Esta Pizza
-              </WAbizButton>
+              <WAbizButton className="w-full justify-center">Pedir Esta Pizza</WAbizButton>
             </div>
           </div>
         </div>

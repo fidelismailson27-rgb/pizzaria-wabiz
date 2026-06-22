@@ -38,7 +38,7 @@ export default function Header() {
             Sobre
           </Link>
           <a
-            href="https://wabiz.com.br/venerato-pizzas"
+            href="https://veneratopizzas.wabiz.delivery/"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-accent text-sm"

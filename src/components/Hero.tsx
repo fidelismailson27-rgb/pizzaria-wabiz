@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { generateWAbizLink, generateWhatsAppLink, UTM_CONFIG } from '@/lib/wabiz';
 
 export default function Hero() {
   return (
@@ -25,10 +24,10 @@ export default function Hero() {
           <div className="mb-8 animate-fade-in">
             <Image
               src="/brand/logo-venerato.jpg"
-              width={220}
-              height={80}
+              width={340}
+              height={120}
               alt="Venerato Pizzas"
-              className="rounded-2xl object-contain"
+              className="object-contain"
               priority
             />
           </div>
@@ -46,13 +45,7 @@ export default function Hero() {
           {/* CTAs */}
           <div className="flex flex-col items-center gap-4 sm:flex-row animate-slide-up animation-delay-200">
             <a
-              href={generateWAbizLink({
-                unidade: 'centro',
-                utmSource: UTM_CONFIG.source,
-                utmMedium: UTM_CONFIG.medium,
-                utmCampaign: UTM_CONFIG.campaign,
-                utmContent: 'hero_pedido',
-              })}
+              href="https://veneratopizzas.wabiz.delivery/"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-accent"
@@ -66,10 +59,7 @@ export default function Hero() {
               Ver Cardápio
             </Link>
             <a
-              href={generateWhatsAppLink(
-                '5511947445932',
-                'Olá! Gostaria de fazer um pedido na Venerato Pizzas.'
-              )}
+              href="https://veneratopizzas.wabiz.delivery/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl border-2 border-[#25D366] bg-[#25D366]/10 px-6 py-3 text-sm font-bold text-[#25D366] transition-all duration-300 hover:bg-[#25D366] hover:text-white hover:scale-105"

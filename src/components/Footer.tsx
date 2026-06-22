@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import InstagramFeed from './InstagramFeed';
-import { generateWhatsAppLink } from '@/lib/wabiz';
 
 const footerLinks = {
   cardapio: [
@@ -100,7 +99,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href={generateWhatsAppLink('5511947445932')}
+                href="https://wa.me/5511947445932"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/60 transition-colors hover:text-[#25D366]"
@@ -119,7 +118,7 @@ export default function Footer() {
           <p className="mt-1">
             Peça pela{' '}
             <a
-              href="https://wabiz.com.br"
+              href="https://veneratopizzas.wabiz.delivery/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-accent hover:underline"

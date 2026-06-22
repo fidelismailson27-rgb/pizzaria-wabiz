@@ -1,5 +1,3 @@
-'use client';
-
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { urlForImage } from '@/lib/sanity';
@@ -28,7 +26,6 @@ export default function PizzaCard({ pizza }: PizzaCardProps) {
       transition={{ duration: 0.4 }}
       className="glass-card group flex flex-col overflow-hidden"
     >
-      {/* Image - ~60% of card */}
       <div className="relative w-full overflow-hidden rounded-t-xl">
         <div className="aspect-[4/3]">
           {imageUrl ? (
@@ -56,7 +53,6 @@ export default function PizzaCard({ pizza }: PizzaCardProps) {
         </div>
       </div>
 
-      {/* Content - ~40% of card */}
       <div className="flex flex-1 flex-col p-4 sm:p-5">
         <h3 className="text-base font-bold leading-tight text-white sm:text-lg">{pizza.nome}</h3>
 
@@ -86,11 +82,7 @@ export default function PizzaCard({ pizza }: PizzaCardProps) {
           <span className="text-xl font-extrabold text-accent sm:text-2xl">
             R$ {pizza.preco.toFixed(2)}
           </span>
-          <WAbizButton
-            unidade="centro"
-            utmContent={pizza.slug?.current}
-            className="min-h-[44px] min-w-[44px] rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-white shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95 sm:px-5 sm:py-3"
-          >
+          <WAbizButton className="min-h-[44px] min-w-[44px] rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-white shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95 sm:px-5 sm:py-3">
             Pedir
           </WAbizButton>
         </div>

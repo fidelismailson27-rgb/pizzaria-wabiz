@@ -95,9 +95,7 @@ export default async function UnidadePage({ params }: PageProps) {
               </div>
 
               <div className="flex flex-wrap gap-3">
-                <WAbizButton unidade={unidade.slug.current} className="flex-1 justify-center">
-                  Pedir Agora
-                </WAbizButton>
+                <WAbizButton className="flex-1 justify-center">Pedir Agora</WAbizButton>
                 <WhatsAppButton
                   telefone={unidade.whatsapp}
                   mensagem={`Olá! Gostaria de fazer um pedido na ${unidade.nome}.`}

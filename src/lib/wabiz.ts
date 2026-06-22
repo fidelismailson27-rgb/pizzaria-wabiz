@@ -1,23 +1,5 @@
-interface WAbizLinkOptions {
-  unidade: string;
-  utmSource?: string;
-  utmMedium?: string;
-  utmCampaign?: string;
-  utmContent?: string;
-}
-
-export function generateWAbizLink(options: WAbizLinkOptions): string {
-  const baseUrl = `https://wabiz.com.br/pizzaria-premium-${options.unidade}`;
-
-  const params = new URLSearchParams();
-
-  if (options.utmSource) params.append('utm_source', options.utmSource);
-  if (options.utmMedium) params.append('utm_medium', options.utmMedium);
-  if (options.utmCampaign) params.append('utm_campaign', options.utmCampaign);
-  if (options.utmContent) params.append('utm_content', options.utmContent);
-
-  const queryString = params.toString();
-  return queryString ? `${baseUrl}?${queryString}` : baseUrl;
+export function generateWAbizLink(): string {
+  return 'https://veneratopizzas.wabiz.delivery/';
 }
 
 export function generateWhatsAppLink(telefone: string, mensagem?: string): string {
@@ -47,5 +29,5 @@ export function getWhatsAppMensagemUnidade(nomeUnidade: string): string {
 export const UTM_CONFIG = {
   source: 'site',
   medium: 'cta',
-  campaign: 'pizzaria_wabiz',
+  campaign: 'venerato_pizzas',
 } as const;

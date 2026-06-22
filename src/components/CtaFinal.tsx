@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { generateWAbizLink, UTM_CONFIG } from '@/lib/wabiz';
 
 export default function CtaFinal() {
   return (
@@ -18,13 +17,7 @@ export default function CtaFinal() {
           <h2 className="heading-xl mb-4 text-white text-balance">Bateu fome?</h2>
           <p className="mb-10 text-lg text-white/70 md:text-xl">Peça agora sua Venerato.</p>
           <a
-            href={generateWAbizLink({
-              unidade: 'centro',
-              utmSource: UTM_CONFIG.source,
-              utmMedium: UTM_CONFIG.medium,
-              utmCampaign: UTM_CONFIG.campaign,
-              utmContent: 'cta_final',
-            })}
+            href="https://veneratopizzas.wabiz.delivery/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-2xl bg-accent px-10 py-5 text-lg font-bold text-black shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl active:scale-95"
