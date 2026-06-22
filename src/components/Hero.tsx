@@ -4,17 +4,33 @@ import Image from 'next/image';
 export default function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden">
-      {/* Background Image */}
+      {/* Background: Video mobile + Image desktop */}
       <div className="absolute inset-0">
+        {/* Desktop: Image */}
         <Image
           src="/images/hero/hero-1.jpg"
           alt="Pizza artesanal Venerato"
           fill
-          className="object-cover blur-[2px] scale-105"
+          className="object-cover blur-[2px] scale-105 hidden md:block"
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
+
+        {/* Mobile: Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className="absolute inset-0 h-full w-full object-cover md:hidden"
+          poster="/images/hero/hero-1.jpg"
+        >
+          <source src="/videos/venerato-hero.mp4" type="video/mp4" />
+        </video>
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/65" />
       </div>
 
       {/* Content */}
