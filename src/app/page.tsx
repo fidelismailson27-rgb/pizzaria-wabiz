@@ -3,9 +3,10 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import PromoBanner from '@/components/PromoBanner';
-import CardapioPreview from '@/components/CardapioPreview';
-import SobrePreview from '@/components/SobrePreview';
-import LocalizacaoPreview from '@/components/LocalizacaoPreview';
+import SobreSection from '@/components/SobreSection';
+import DestaquesSection from '@/components/DestaquesSection';
+import UnidadesSection from '@/components/UnidadesSection';
+import CtaFinal from '@/components/CtaFinal';
 
 export const metadata: Metadata = {
   title: 'Venerato Pizzas | A Melhor Pizza da Cidade',
@@ -20,9 +21,10 @@ export default function Home() {
       <main>
         <Hero />
         <PromoBanner />
-        <CardapioPreview />
-        <SobrePreview />
-        <LocalizacaoPreview />
+        <SobreSection />
+        <DestaquesSection />
+        <UnidadesSection />
+        <CtaFinal />
       </main>
       <Footer />
     </>

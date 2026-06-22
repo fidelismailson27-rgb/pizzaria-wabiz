@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { generateWAbizLink, UTM_CONFIG } from '@/lib/wabiz';
+import { generateWAbizLink, generateWhatsAppLink, UTM_CONFIG } from '@/lib/wabiz';
 
 export default function Hero() {
   return (
@@ -24,7 +24,7 @@ export default function Hero() {
           {/* Logo */}
           <div className="mb-8 animate-fade-in">
             <Image
-              src="/brand/logo-venerato.jpg"
+              src="/logo-venerato.png"
               width={220}
               height={80}
               alt="Venerato Pizzas"
@@ -33,33 +33,48 @@ export default function Hero() {
           </div>
 
           {/* Title */}
-          <h1 className="heading-xl mb-4 max-w-2xl text-white text-balance animate-slide-up">
-            O sabor que conquistou <span className="text-gradient">Taboão da Serra</span>
+          <h1 className="heading-xl mb-4 max-w-3xl text-white text-balance animate-slide-up">
+            A pizza que conquistou <span className="text-gradient">Taboão da Serra</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="mb-10 max-w-lg text-lg text-white/70 animate-slide-up animation-delay-100 md:text-xl">
-            Pizzas artesanais com ingredientes selecionados.
+          <p className="mb-10 max-w-xl text-lg text-white/70 animate-slide-up animation-delay-100 md:text-xl">
+            Muito recheio, ingredientes selecionados e sabor de verdade.
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col gap-4 sm:flex-row animate-slide-up animation-delay-200">
-            <Link href="/cardapio" className="btn-primary">
-              Ver Cardápio
-            </Link>
+          <div className="flex flex-col items-center gap-4 sm:flex-row animate-slide-up animation-delay-200">
             <a
               href={generateWAbizLink({
                 unidade: 'centro',
                 utmSource: UTM_CONFIG.source,
                 utmMedium: UTM_CONFIG.medium,
                 utmCampaign: UTM_CONFIG.campaign,
-                utmContent: 'hero_cta',
+                utmContent: 'hero_pedido',
               })}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-accent"
             >
-              Pedir Agora
+              Fazer Pedido
+            </a>
+            <Link
+              href="/cardapio"
+              className="btn-secondary border-white text-white hover:bg-white hover:text-dark-950"
+            >
+              Ver Cardápio
+            </Link>
+            <a
+              href={generateWhatsAppLink(
+                '5511999990001',
+                'Olá! Gostaria de fazer um pedido na Venerato.'
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl border-2 border-[#25D366] bg-[#25D366]/10 px-6 py-3 text-sm font-bold text-[#25D366] transition-all duration-300 hover:bg-[#25D366] hover:text-white hover:scale-105"
+            >
+              <span>💬</span>
+              Pedir pelo WhatsApp
             </a>
           </div>
         </div>
