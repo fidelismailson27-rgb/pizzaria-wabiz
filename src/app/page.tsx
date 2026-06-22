@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
+import NossosDestaques from '@/components/NossosDestaques';
 import PromoBanner from '@/components/PromoBanner';
 import SobreSection from '@/components/SobreSection';
 import DestaquesSection from '@/components/DestaquesSection';
@@ -20,6 +21,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <NossosDestaques />
         <PromoBanner />
         <SobreSection />
         <DestaquesSection />

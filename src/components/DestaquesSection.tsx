@@ -4,52 +4,34 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-const destaques = [
+const categorias = [
   {
     nome: 'Venerato do Dia',
-    descricao: 'Todos os dias vários sabores por apenas R$ 60,99',
+    descricao: 'Sabores selecionados para deixar seu dia mais gostoso',
     imagem: '/pizzas/moda-casa.jpg',
     destaque: true,
   },
   {
-    nome: 'Pudim no Copo',
-    descricao: 'Novidade irresistível',
+    nome: 'Combos',
+    descricao: 'Opções práticas para dividir com a família',
+    imagem: '/pizzas/calabresa.jpg',
+    destaque: false,
+  },
+  {
+    nome: 'Pudim',
+    descricao: 'Sobremesa cremosa para completar o pedido',
     imagem: '/products/pudim-copo.jpg',
     destaque: false,
   },
   {
-    nome: 'Empadas Artesanais',
-    descricao: 'Recheio generoso e massa folhada',
+    nome: 'Empadas',
+    descricao: 'Artesanais, recheadas e feitas com capricho',
     imagem: '/products/empada.jpg',
     destaque: false,
   },
   {
-    nome: 'Combo II',
-    descricao: '2 Pizzas Grandes + 1 Coca 2 Litros',
-    imagem: '/pizzas/calabresa.jpg',
-    destaque: false,
-  },
-  {
-    nome: 'Combo I',
-    descricao: '1 Pizza Grande + 1 Pizza Broto Doce',
-    imagem: '/pizzas/calabresa.jpg',
-    destaque: false,
-  },
-  {
-    nome: 'Pizzas Grandes',
-    descricao: 'Todos os sabores em tamanho grande',
-    imagem: '/pizzas/moda-casa.jpg',
-    destaque: false,
-  },
-  {
-    nome: 'Pizzas Broto',
-    descricao: 'Tamanho ideal para quem quer experimentar',
-    imagem: '/pizzas/frango.jpg',
-    destaque: false,
-  },
-  {
     nome: 'Bebidas',
-    descricao: 'Refrigerantes, sucos e mais',
+    descricao: 'Refrigerantes e acompanhamentos para o seu pedido',
     imagem: '/pizzas/frango.jpg',
     destaque: false,
   },
@@ -72,8 +54,8 @@ export default function DestaquesSection() {
           <h2 className="heading-lg text-white">O que você encontra aqui</h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
-          {destaques.map((item, index) => (
+        <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-5">
+          {categorias.map((item, index) => (
             <motion.div
               key={item.nome}
               initial={{ opacity: 0, y: 30 }}
@@ -87,7 +69,7 @@ export default function DestaquesSection() {
                   src={item.imagem}
                   alt={item.nome}
                   fill
-                  sizes="(max-width: 768px) 50vw, 25vw"
+                  sizes="(max-width: 768px) 50vw, 20vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 {item.destaque && (

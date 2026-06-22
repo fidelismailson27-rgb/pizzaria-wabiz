@@ -27,7 +27,7 @@ export default function Hero() {
               width={500}
               height={163}
               alt="Venerato Pizzas"
-              className="h-auto w-[300px] object-contain md:w-[500px]"
+              className="h-auto w-[380px] object-contain md:w-[650px] lg:w-[750px]"
               priority
             />
           </div>

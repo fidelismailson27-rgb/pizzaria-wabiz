@@ -18,23 +18,18 @@ export default function PromoBanner() {
               🔥 Venerato do Dia
             </span>
             <h2 className="text-2xl font-extrabold text-white sm:text-3xl">
-              Vários sabores por apenas
+              Sabor em destaque hoje
             </h2>
           </div>
 
-          <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-8">
-            <span className="text-5xl font-extrabold text-white drop-shadow-lg md:text-6xl">
-              R$ 60,99
-            </span>
-            <a
-              href="https://veneratopizzas.wabiz.delivery/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-2xl bg-white px-8 py-4 text-base font-bold text-red-600 shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl active:scale-95 sm:px-10 sm:text-lg"
-            >
-              Pedir Agora
-            </a>
-          </div>
+          <a
+            href="https://veneratopizzas.wabiz.delivery/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-2xl bg-white px-8 py-4 text-base font-bold text-red-600 shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl active:scale-95 sm:px-10 sm:text-lg"
+          >
+            Pedir Agora
+          </a>
         </motion.div>
       </div>
     </section>
