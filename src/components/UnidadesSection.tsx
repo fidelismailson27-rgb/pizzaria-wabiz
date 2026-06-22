@@ -1,10 +1,12 @@
 'use client';
 
-import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { generateGoogleMapsLink } from '@/lib/wabiz';
+import { generateGoogleMapsLink, generateWhatsAppLink } from '@/lib/wabiz';
 
 export default function UnidadesSection() {
+  const endereco = 'Av. Embaixador Assis Chateaubriand, 437, Jd. Ouro Preto, Taboão da Serra - SP';
+  const whatsapp = '5511947445932';
+
   return (
     <section className="relative py-24 md:py-32" style={{ backgroundColor: '#0F1115' }}>
       <div className="container-custom">
@@ -60,7 +62,7 @@ export default function UnidadesSection() {
             <div className="space-y-3 text-white/70">
               <div className="flex items-start gap-3">
                 <span className="mt-0.5 text-accent">📍</span>
-                <p>Rua Exemplo, 123 - Jardim Dracena, Taboão da Serra - SP</p>
+                <p>{endereco}</p>
               </div>
               <div className="flex items-start gap-3">
                 <span className="mt-0.5 text-accent">🕐</span>
@@ -68,22 +70,35 @@ export default function UnidadesSection() {
               </div>
               <div className="flex items-start gap-3">
                 <span className="mt-0.5 text-accent">📞</span>
-                <p>(11) 99999-0000</p>
+                <div>
+                  <p>WhatsApp: 11 94744-5932</p>
+                  <p>Fixo: 11 4701-2612</p>
+                  <p>Fixo: 11 4701-9220</p>
+                  <p>Fixo: 11 4787-7944</p>
+                </div>
               </div>
             </div>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
-                href={generateGoogleMapsLink('Taboão Jd. Dracena, Taboão da Serra - SP')}
+                href={generateGoogleMapsLink(endereco)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-secondary flex-1 justify-center"
               >
                 Como Chegar
               </a>
-              <Link href="/localizacao" className="btn-primary flex-1 justify-center">
+              <a
+                href={generateWhatsAppLink(
+                  whatsapp,
+                  'Olá! Gostaria de fazer um pedido na Venerato Pizzas - Taboão Jd. Dracena.'
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary flex-1 justify-center"
+              >
                 Pedir Nessa Unidade
-              </Link>
+              </a>
             </div>
           </div>
         </motion.div>

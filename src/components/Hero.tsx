@@ -24,10 +24,11 @@ export default function Hero() {
           {/* Logo */}
           <div className="mb-8 animate-fade-in">
             <Image
-              src="/logo-venerato.png"
+              src="/brand/logo-venerato.jpg"
               width={220}
               height={80}
               alt="Venerato Pizzas"
+              className="rounded-2xl object-contain"
               priority
             />
           </div>
@@ -66,8 +67,8 @@ export default function Hero() {
             </Link>
             <a
               href={generateWhatsAppLink(
-                '5511999990001',
-                'Olá! Gostaria de fazer um pedido na Venerato.'
+                '5511947445932',
+                'Olá! Gostaria de fazer um pedido na Venerato Pizzas.'
               )}
               target="_blank"
               rel="noopener noreferrer"

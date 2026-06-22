@@ -106,7 +106,7 @@ export default function RootLayout({
     <html lang="pt-BR" className={`${inter.variable} ${playfair.variable}`}>
       <body className="min-h-screen font-sans antialiased" style={{ backgroundColor: '#FFF8E7' }}>
         {children}
-        <WhatsAppFloat telefone="5511999990001" nomeUnidade="Venerato Pizzas" />
+        <WhatsAppFloat telefone="5511947445932" nomeUnidade="Venerato Pizzas" />
       </body>
     </html>
   );
