@@ -54,7 +54,7 @@ export const metadata: Metadata = {
       'Descubra a experiência única da Venerato Pizzas. Pizzas artesanais com ingredientes selecionados.',
     images: [
       {
-        url: '/brand/logo-venerato.jpg',
+        url: '/brand/logo-venerato-transparent.png',
         width: 1200,
         height: 630,
         alt: 'Venerato Pizzas',
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     title: 'Venerato Pizzas | A Melhor Pizza da Cidade',
     description:
       'Descubra a experiência única da Venerato Pizzas. Pizzas artesanais com ingredientes selecionados.',
-    images: ['/brand/logo-venerato.jpg'],
+    images: ['/brand/logo-venerato-transparent.png'],
   },
   robots: {
     index: true,
@@ -80,9 +80,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/brand/logo-venerato.jpg',
-    shortcut: '/brand/logo-venerato.jpg',
-    apple: '/brand/logo-venerato.jpg',
+    icon: '/brand/logo-venerato-transparent.png',
+    shortcut: '/brand/logo-venerato-transparent.png',
+    apple: '/brand/logo-venerato-transparent.png',
   },
   manifest: '/manifest.json',
 };

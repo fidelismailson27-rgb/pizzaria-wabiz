@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,6 +40,15 @@ export default function Navbar() {
       {isOpen && (
         <div className="glass absolute left-0 right-0 top-16 border-b border-white/10">
           <nav className="container-custom space-y-1 py-4">
+            <Link href="/" className="mb-3 flex items-center px-4" onClick={() => setIsOpen(false)}>
+              <Image
+                src="/brand/logo-venerato-transparent.png"
+                alt="Venerato Pizzas - Logo"
+                width={180}
+                height={59}
+                className="h-auto w-36 object-contain"
+              />
+            </Link>
             <Link
               href="/cardapio"
               className="block rounded-xl px-4 py-3 text-base font-medium text-white/80 transition-all hover:bg-white/10 hover:text-white"
@@ -62,7 +72,7 @@ export default function Navbar() {
             </Link>
             <div className="pt-2">
               <a
-                href="https://wabiz.com.br/venerato-pizzas"
+                href="https://veneratopizzas.wabiz.delivery/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full text-center btn-accent"

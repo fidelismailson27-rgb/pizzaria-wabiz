@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 300" role="img" aria-labelledby="title desc">
+  <title id="title">Venerato Pizzas</title>
+  <desc id="desc">Logo vetorial Venerato Pizzas com chapeu de chef e pizza, sem fundo.</desc>
+  <defs>
+    <filter id="softShadow" x="-12%" y="-18%" width="124%" height="136%">
+      <feDropShadow dx="0" dy="9" stdDeviation="7" flood-color="#000000" flood-opacity=".24" />
+    </filter>
+    <linearGradient id="greenFill" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#2f8f42" />
+      <stop offset=".54" stop-color="#207b34" />
+      <stop offset="1" stop-color="#145f28" />
+    </linearGradient>
+    <linearGradient id="redFill" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#dd3045" />
+      <stop offset="1" stop-color="#a3172a" />
+    </linearGradient>
+    <radialGradient id="pizzaCrust" cx=".44" cy=".42" r=".66">
+      <stop offset="0" stop-color="#ffe086" />
+      <stop offset=".62" stop-color="#f6b34e" />
+      <stop offset="1" stop-color="#c96e25" />
+    </radialGradient>
+  </defs>
+
+  <g filter="url(#softShadow)">
+    <g transform="translate(64 55)">
+      <path
+        d="M38 67c-19-3-34-18-34-37C4 13 17 0 35 0c10 0 19 4 25 11C67 3 79 0 91 4c16 5 26 19 25 34c17 3 30 16 30 33c0 20-17 35-37 35H37c-19 0-34-15-34-34c0-2 0-4 1-6c9 4 20 5 34 1Z"
+        fill="#ffffff"
+      />
+      <path
+        d="M41 55c-15-2-26-13-26-26c0-10 8-18 20-18c10 0 18 5 24 14c5-9 16-13 27-9c11 4 17 14 15 26c17 0 31 10 31 25c0 14-12 25-27 25H39c-14 0-25-10-25-23c0-4 1-7 3-10c6 2 14 2 24-4Z"
+        fill="url(#redFill)"
+      />
+      <path
+        d="M47 78c14 13 38 15 58 2v46H47V78Z"
+        fill="#ffffff"
+      />
+      <path
+        d="M58 84c10 7 25 8 36 1v31H58V84Z"
+        fill="#1d7b35"
+      />
+    </g>
+
+    <g>
+      <text
+        x="182"
+        y="176"
+        fill="#ffffff"
+        stroke="#ffffff"
+        stroke-width="22"
+        stroke-linejoin="round"
+        paint-order="stroke fill"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="120"
+        font-style="italic"
+        font-weight="700"
+      >
+        Venerato
+      </text>
+      <text
+        x="182"
+        y="176"
+        fill="url(#greenFill)"
+        stroke="#1d5f2f"
+        stroke-width="4"
+        stroke-linejoin="round"
+        paint-order="stroke fill"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="120"
+        font-style="italic"
+        font-weight="700"
+      >
+        Venerato
+      </text>
+    </g>
+
+    <g transform="translate(635 40)">
+      <circle cx="90" cy="90" r="86" fill="#ffffff" />
+      <circle cx="90" cy="90" r="73" fill="#b85b20" />
+      <circle cx="90" cy="90" r="61" fill="url(#pizzaCrust)" />
+      <path d="M90 29A61 61 0 0 1 143 60L90 90Z" fill="#fff2a6" opacity=".95" />
+      <path d="M90 29v61l53-30" fill="none" stroke="#8d3b17" stroke-width="5" stroke-linejoin="round" />
+      <g fill="#b52029">
+        <circle cx="68" cy="65" r="8" />
+        <circle cx="103" cy="56" r="7" />
+        <circle cx="116" cy="95" r="8" />
+        <circle cx="76" cy="113" r="7" />
+        <circle cx="51" cy="93" r="6" />
+      </g>
+      <g fill="#287934">
+        <circle cx="86" cy="47" r="5" />
+        <circle cx="130" cy="74" r="5" />
+        <circle cx="98" cy="123" r="5" />
+        <circle cx="58" cy="123" r="5" />
+      </g>
+      <g stroke="#8d3b17" stroke-width="5" stroke-linecap="round">
+        <path d="M45 71c23 4 50 2 80-7" />
+        <path d="M53 126c22-13 44-34 65-63" />
+      </g>
+    </g>
+
+    <g>
+      <text
+        x="562"
+        y="244"
+        fill="#ffffff"
+        stroke="#ffffff"
+        stroke-width="14"
+        stroke-linejoin="round"
+        paint-order="stroke fill"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="82"
+        font-style="italic"
+        font-weight="700"
+      >
+        Pizzas
+      </text>
+      <text
+        x="562"
+        y="244"
+        fill="url(#redFill)"
+        stroke="#8e1828"
+        stroke-width="3"
+        stroke-linejoin="round"
+        paint-order="stroke fill"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="82"
+        font-style="italic"
+        font-weight="700"
+      >
+        Pizzas
+      </text>
+    </g>
+  </g>
+</svg>

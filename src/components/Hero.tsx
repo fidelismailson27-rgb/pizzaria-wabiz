@@ -23,11 +23,11 @@ export default function Hero() {
           {/* Logo */}
           <div className="mb-8 animate-fade-in">
             <Image
-              src="/brand/logo-venerato.jpg"
-              width={340}
-              height={120}
+              src="/brand/logo-venerato-transparent.png"
+              width={500}
+              height={163}
               alt="Venerato Pizzas"
-              className="object-contain"
+              className="h-auto w-[300px] object-contain md:w-[500px]"
               priority
             />
           </div>

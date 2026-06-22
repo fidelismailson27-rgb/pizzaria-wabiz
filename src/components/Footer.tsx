@@ -24,13 +24,12 @@ export default function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-3">
               <Image
-                src="/brand/logo-venerato.jpg"
+                src="/brand/logo-venerato-transparent.png"
                 alt="Venerato Pizzas - Logo"
-                width={40}
-                height={40}
-                className="rounded-lg object-cover"
+                width={160}
+                height={52}
+                className="h-auto w-36 object-contain"
               />
-              <span className="text-lg font-bold text-white">Venerato Pizzas</span>
             </Link>
             <p className="text-sm text-white/60">
               A melhor pizza da cidade. Ingredientes selecionados e sabor incomparável.

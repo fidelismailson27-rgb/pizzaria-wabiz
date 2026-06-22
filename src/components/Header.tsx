@@ -8,14 +8,13 @@ export default function Header() {
       <div className="container-custom flex h-14 items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/brand/logo-venerato.jpg"
+            src="/brand/logo-venerato-transparent.png"
             alt="Venerato Pizzas - Logo"
-            width={36}
-            height={36}
-            className="rounded-xl object-cover"
+            width={132}
+            height={43}
+            className="h-auto w-28 object-contain md:w-32"
             priority
           />
-          <span className="text-base font-bold text-white">Venerato</span>
         </Link>
 
         <nav className="hidden items-center space-x-6 md:flex">
