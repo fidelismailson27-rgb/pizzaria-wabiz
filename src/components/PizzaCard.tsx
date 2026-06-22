@@ -1,7 +1,14 @@
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { urlForImage } from '@/lib/sanity';
 import WAbizButton from './WAbizButton';
 import type { Pizza } from '@/lib/sanity-queries';
+
+const pizzaImages: Record<string, string> = {
+  'A Moda da Casa': '/pizzas/moda-casa.jpg',
+  Calabresa: '/pizzas/calabresa.jpg',
+  'Frango Catupiry': '/pizzas/frango.jpg',
+};
 
 interface PizzaCardProps {
   pizza: Pizza;
@@ -9,32 +16,45 @@ interface PizzaCardProps {
 
 export default function PizzaCard({ pizza }: PizzaCardProps) {
   const imageUrl = urlForImage(pizza.imagem);
+  const image = pizzaImages[pizza.nome] ?? '/pizzas/moda-casa.jpg';
 
   return (
-    <div className="glass-card group flex flex-col overflow-hidden">
-      {/* Image - 60% of card */}
-      <div className="relative h-48 w-full overflow-hidden rounded-t-xl sm:h-56">
-        {imageUrl ? (
-          <Image
-            src={imageUrl}
-            alt={pizza.nome}
-            fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-110"
-          />
-        ) : (
-          <div className="placeholder-pizza flex h-full items-center justify-center">
-            <span className="text-6xl opacity-80">🍕</span>
-          </div>
-        )}
-        {pizza.destaque && (
-          <div className="absolute left-3 top-3 rounded-full bg-secondary px-3 py-1 text-xs font-bold text-white shadow-lg">
-            Destaque
-          </div>
-        )}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4 }}
+      className="glass-card group flex flex-col overflow-hidden"
+    >
+      {/* Image - ~60% of card */}
+      <div className="relative w-full overflow-hidden rounded-t-xl">
+        <div className="aspect-[4/3]">
+          {imageUrl ? (
+            <Image
+              src={imageUrl}
+              alt={pizza.nome}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+          ) : (
+            <Image
+              src={image}
+              alt={pizza.nome}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+          )}
+          {pizza.destaque && (
+            <div className="absolute left-3 top-3 rounded-full bg-secondary px-3 py-1 text-xs font-bold text-white shadow-lg">
+              Destaque
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* Content - 40% of card */}
+      {/* Content - ~40% of card */}
       <div className="flex flex-1 flex-col p-4 sm:p-5">
         <h3 className="text-base font-bold leading-tight text-white sm:text-lg">{pizza.nome}</h3>
 
@@ -73,6 +93,6 @@ export default function PizzaCard({ pizza }: PizzaCardProps) {
           </WAbizButton>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

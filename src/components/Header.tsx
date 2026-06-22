@@ -4,21 +4,21 @@ import Navbar from './Navbar';
 
 export default function Header() {
   return (
-    <header className="glass-header">
-      <div className="container-custom flex h-16 items-center justify-between">
+    <header className="fixed top-4 left-4 right-4 z-50 backdrop-blur-xl bg-white/10 border border-white/10 rounded-2xl shadow-2xl">
+      <div className="container-custom flex h-14 items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/brand/logo-venerato.jpg"
             alt="Venerato Pizzas - Logo"
-            width={40}
-            height={40}
-            className="rounded-lg object-cover"
+            width={36}
+            height={36}
+            className="rounded-xl object-cover"
             priority
           />
-          <span className="text-lg font-bold text-white">Venerato</span>
+          <span className="text-base font-bold text-white">Venerato</span>
         </Link>
 
-        <nav className="hidden items-center space-x-8 md:flex">
+        <nav className="hidden items-center space-x-6 md:flex">
           <Link
             href="/cardapio"
             className="text-sm font-medium text-white/70 transition-colors hover:text-white"
@@ -41,7 +41,7 @@ export default function Header() {
             href="https://wabiz.com.br/venerato-pizzas"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-accent"
+            className="btn-accent text-sm"
           >
             Pedir Agora
           </a>

@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
+import PromoBanner from '@/components/PromoBanner';
 import CardapioPreview from '@/components/CardapioPreview';
 import SobrePreview from '@/components/SobrePreview';
 import LocalizacaoPreview from '@/components/LocalizacaoPreview';
@@ -18,6 +19,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <PromoBanner />
         <CardapioPreview />
         <SobrePreview />
         <LocalizacaoPreview />
