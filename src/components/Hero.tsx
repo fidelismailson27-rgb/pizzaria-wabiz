@@ -11,7 +11,7 @@ export default function Hero() {
           src="/images/hero/hero-1.jpg"
           alt="Pizza artesanal Venerato"
           fill
-          className="object-cover blur-[2px] scale-105 hidden md:block"
+          className="hidden object-cover blur-[2px] scale-105 md:block"
           priority
           sizes="100vw"
         />
@@ -23,18 +23,18 @@ export default function Hero() {
           loop
           playsInline
           preload="metadata"
-          className="absolute inset-0 h-full w-full object-cover md:hidden"
+          className="absolute inset-0 z-0 h-full w-full object-cover md:hidden"
           poster="/images/hero/hero-1.jpg"
         >
-          <source src="/videos/venerato-hero.mp4" type="video/mp4" />
+          <source src="/videos/venerato-hero.mp4?v=2" type="video/mp4" />
         </video>
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/65" />
+        <div className="absolute inset-0 z-10 bg-black/65" />
       </div>
 
       {/* Content */}
-      <div className="relative flex min-h-screen items-center justify-center">
+      <div className="relative z-20 flex min-h-screen items-center justify-center">
         <div className="container-custom flex flex-col items-center text-center">
           {/* Logo */}
           <div className="mb-8 animate-fade-in">
