@@ -11,7 +11,7 @@ interface UnidadeSelectorProps {
 export default function UnidadeSelector({ unidadeAtual }: UnidadeSelectorProps) {
   const [isOpen, setIsOpen] = useState(false);
   const unidadeSelecionada =
-    unidades.unidades.find((u) => u.slug === unidadeAtual) || unidades.unidades[0];
+    unidades.unidades.find((u) => u.slug.current === unidadeAtual) || unidades.unidades[0];
 
   if (!unidadeSelecionada) return null;
 
@@ -43,15 +43,15 @@ export default function UnidadeSelector({ unidadeAtual }: UnidadeSelectorProps) 
         >
           {unidades.unidades.map((unidade) => (
             <Link
-              key={unidade.id}
-              href={`/localizacao/${unidade.slug}`}
+              key={unidade._id}
+              href={`/localizacao/${unidade.slug.current}`}
               className={`flex items-center space-x-3 px-4 py-3 text-sm transition-colors hover:bg-primary-50 dark:hover:bg-dark-800 ${
-                unidade.slug === unidadeAtual
+                unidade.slug.current === unidadeAtual
                   ? 'bg-primary-50 text-primary-500 dark:bg-dark-800'
                   : ''
               }`}
               role="option"
-              aria-selected={unidade.slug === unidadeAtual}
+              aria-selected={unidade.slug.current === unidadeAtual}
               onClick={() => setIsOpen(false)}
             >
               <span>📍</span>

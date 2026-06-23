@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pizzaria-premium-v1';
+const CACHE_NAME = 'venerato-pizzas-v1';
 const urlsToCache = [
   '/',
   '/cardapio',

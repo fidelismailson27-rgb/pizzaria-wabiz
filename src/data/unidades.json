@@ -1,66 +1,14 @@
 {
   "unidades": [
     {
-      "id": "centro",
-      "nome": "Pizzaria Premium - Centro",
-      "slug": "centro",
-      "endereco": "Rua Augusta, 1234 - Consolação, São Paulo - SP",
-      "cep": "01305-100",
-      "telefone": "+55-11-3256-1234",
-      "whatsapp": "5511999990001",
-      "email": "centro@pizzariapremium.com.br",
-      "horarios": {
-        "segunda": "18:00-23:00",
-        "terca": "18:00-23:00",
-        "quarta": "18:00-23:00",
-        "quinta": "18:00-00:00",
-        "sexta": "18:00-01:00",
-        "sabado": "18:00-01:00",
-        "domingo": "18:00-23:00"
-      },
-      "mapa": {
-        "lat": -23.5558,
-        "lng": -46.6622
-      },
-      "wabiz": "https://wabiz.com.br/pizzaria-premium-centro",
-      "instagram": "@pizzariapremiumcentro",
-      "destaque": true
-    },
-    {
-      "id": "vinhedo",
-      "nome": "Pizzaria Premium - Vinhedo",
-      "slug": "vinhedo",
-      "endereco": "Rod. Anhanguera, km 100 - Vinhedo - SP",
-      "cep": "13280-000",
-      "telefone": "+55-19-3256-5678",
-      "whatsapp": "5511999990002",
-      "email": "vinhedo@pizzariapremium.com.br",
-      "horarios": {
-        "segunda": "Fechado",
-        "terca": "18:00-23:00",
-        "quarta": "18:00-23:00",
-        "quinta": "18:00-23:00",
-        "sexta": "18:00-00:00",
-        "sabado": "18:00-00:00",
-        "domingo": "18:00-23:00"
-      },
-      "mapa": {
-        "lat": -23.0187,
-        "lng": -46.9713
-      },
-      "wabiz": "https://wabiz.com.br/pizzaria-premium-vinhedo",
-      "instagram": "@pizzariapremiumvinhedo",
-      "destaque": false
-    },
-    {
-      "id": "campinas",
-      "nome": "Pizzaria Premium - Campinas",
-      "slug": "campinas",
-      "endereco": "Av. Francisco Glicério, 567 - Centro, Campinas - SP",
-      "cep": "13013-140",
-      "telefone": "+55-19-3256-9012",
-      "whatsapp": "5511999990003",
-      "email": "campinas@pizzariapremium.com.br",
+      "_id": "1",
+      "nome": "Venerato - Campo Limpo",
+      "slug": { "current": "campo-limpo" },
+      "endereco": "Rua Eliane de Araújo Neves, 90, Campo Limpo, São Paulo - SP",
+      "cep": "",
+      "telefone": "+55-11-94744-5932",
+      "whatsapp": "5511947445932",
+      "email": "contato@veneratopizzas.com.br",
       "horarios": {
         "segunda": "18:00-23:00",
         "terca": "18:00-23:00",
@@ -70,13 +18,35 @@
         "sabado": "18:00-01:00",
         "domingo": "18:00-23:00"
       },
-      "mapa": {
-        "lat": -22.9099,
-        "lng": -47.0626
+      "mapa": { "lat": -23.65, "lng": -46.75 },
+      "wabiz": "https://veneratopizzas.wabiz.delivery/",
+      "instagram": "@veneratopizzas",
+      "destaque": true,
+      "ordem": 0
+    },
+    {
+      "_id": "2",
+      "nome": "Venerato - Taboão Jd. Dracena",
+      "slug": { "current": "taboao-jd-dracena" },
+      "endereco": "Av. Embaixador Assis Chateaubriand, 437, Taboão da Serra - SP",
+      "cep": "",
+      "telefone": "+55-11-94744-5932",
+      "whatsapp": "5511947445932",
+      "email": "contato@veneratopizzas.com.br",
+      "horarios": {
+        "segunda": "18:00-23:00",
+        "terca": "18:00-23:00",
+        "quarta": "18:00-23:00",
+        "quinta": "18:00-23:00",
+        "sexta": "18:00-01:00",
+        "sabado": "18:00-01:00",
+        "domingo": "18:00-23:00"
       },
-      "wabiz": "https://wabiz.com.br/pizzaria-premium-campinas",
-      "instagram": "@pizzariapremiumcampinas",
-      "destaque": false
+      "mapa": { "lat": -23.55, "lng": -46.63 },
+      "wabiz": "https://veneratopizzas.wabiz.delivery/",
+      "instagram": "@veneratopizzas",
+      "destaque": true,
+      "ordem": 1
     }
   ]
 }

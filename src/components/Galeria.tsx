@@ -1,6 +1,6 @@
 const fotos = [
-  { id: 1, alt: 'Interior da pizzaria', categoria: 'ambiente' },
-  { id: 2, alt: 'Pizzaria à noite', categoria: 'ambiente' },
+  { id: 1, alt: 'Interior da Venerato', categoria: 'ambiente' },
+  { id: 2, alt: 'Venerato à noite', categoria: 'ambiente' },
   { id: 3, alt: 'Chef preparando pizza', categoria: 'equipe' },
   { id: 4, alt: 'Massa sendo preparada', categoria: 'cozinha' },
   { id: 5, alt: 'Pizza saindo do forno', categoria: 'cozinha' },

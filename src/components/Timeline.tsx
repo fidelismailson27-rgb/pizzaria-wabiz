@@ -12,7 +12,7 @@ const timeline = [
   {
     year: '2015',
     title: 'Reconhecimento',
-    description: 'Eleita a melhor pizzaria da região.',
+    description: 'Eleita a melhor da região.',
   },
   {
     year: '2020',

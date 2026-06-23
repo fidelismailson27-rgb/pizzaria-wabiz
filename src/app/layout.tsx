@@ -23,7 +23,6 @@ export const metadata: Metadata = {
   description:
     'Descubra a experiência única da Venerato Pizzas. Pizzas artesanais com ingredientes selecionados. Peça agora pela WAbiz!',
   keywords: [
-    'pizzaria',
     'pizza',
     'pizza artesanal',
     'melhor pizza',

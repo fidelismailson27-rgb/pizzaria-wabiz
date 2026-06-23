@@ -1,16 +1,11 @@
 import { MetadataRoute } from 'next';
 import unidades from '@/data/unidades.json';
 
-const baseUrl = 'https://pizzaria-wabiz.vercel.app';
+const baseUrl = 'https://venerato-pizzas.vercel.app';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 1,
-    },
+    { url: baseUrl, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 1 },
     {
       url: `${baseUrl}/cardapio`,
       lastModified: new Date(),
@@ -32,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const unidadePages = unidades.unidades.map((unidade) => ({
-    url: `${baseUrl}/localizacao/${unidade.slug}`,
+    url: `${baseUrl}/localizacao/${unidade.slug.current}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.8,

@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/admin/'],
       },
     ],
-    sitemap: 'https://pizzaria-wabiz.vercel.app/sitemap.xml',
+    sitemap: 'https://venerato-pizzas.vercel.app/sitemap.xml',
   };
 }

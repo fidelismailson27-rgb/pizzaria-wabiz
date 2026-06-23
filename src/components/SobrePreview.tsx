@@ -9,7 +9,7 @@ export default function SobrePreview() {
             <h2 className="heading-lg mb-6">Nossa História</h2>
             <p className="mb-4 text-lg text-dark-300">
               Há mais de 20 anos, a Venerato Pizzas vem encantando paladares com pizzas artesanais
-              de qualidade incomparável. Nascida do sonho de criar algo especial, nossa pizzaria se
+              de qualidade incomparável. Nascida do sonho de criar algo especial, nossa marca se
               tornou referência em Taboão da Serra e Campo Limpo.
             </p>
             <p className="mb-8 text-dark-400">
