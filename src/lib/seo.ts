@@ -19,7 +19,7 @@ export function generateUnidadeMetadata(unidade: UnidadeSEO): Metadata {
     openGraph: {
       title: `${unidade.nome} | Pedir Pizza Online`,
       description: `Peça sua pizza favorita na ${unidade.nome}. ${unidade.endereco}.`,
-      url: `https://pizzaria-wabiz.vercel.app/localizacao/${unidade.slug}`,
+      url: `https://venerato-pizzas.vercel.app/localizacao/${unidade.slug}`,
       type: 'website',
       locale: 'pt_BR',
     },
@@ -34,17 +34,16 @@ export function generateLocalBusinessSchema(unidade: UnidadeSEO) {
     '@context': 'https://schema.org',
     '@type': 'Pizzeria',
     name: unidade.nome,
-    image: '/images/logo.png',
+    image: '/brand/logo-venerato.svg',
     address: {
       '@type': 'PostalAddress',
       streetAddress: unidade.endereco,
-      addressLocality: 'São Paulo',
+      addressLocality: 'Taboão da Serra',
       addressRegion: 'SP',
-      postalCode: '01305-100',
       addressCountry: 'BR',
     },
     telephone: unidade.telefone,
-    url: `https://pizzaria-wabiz.vercel.app/localizacao/${unidade.slug}`,
+    url: `https://venerato-pizzas.vercel.app/localizacao/${unidade.slug}`,
     priceRange: '$$',
     servesCuisine: 'Italian',
     hasMenu: '/cardapio',
@@ -56,7 +55,7 @@ export function generateLocalBusinessSchema(unidade: UnidadeSEO) {
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Sunday'],
         opens: '18:00',
         closes: '23:00',
       },
@@ -66,12 +65,6 @@ export function generateLocalBusinessSchema(unidade: UnidadeSEO) {
         opens: '18:00',
         closes: '01:00',
       },
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: 'Sunday',
-        opens: '18:00',
-        closes: '23:00',
-      },
     ],
   };
 }
@@ -80,16 +73,13 @@ export function generateOrganizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Pizzaria Premium',
-    url: 'https://pizzaria-wabiz.vercel.app',
-    logo: '/images/logo.png',
-    sameAs: [
-      'https://www.instagram.com/pizzariapremium',
-      'https://www.facebook.com/pizzariapremium',
-    ],
+    name: 'Venerato Pizzas',
+    url: 'https://venerato-pizzas.vercel.app',
+    logo: '/brand/logo-venerato.svg',
+    sameAs: ['https://www.instagram.com/veneratopizzas', 'https://www.facebook.com/veneratopizzas'],
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+55-11-3256-1234',
+      telephone: '+55-11-94744-5932',
       contactType: 'customer service',
       availableLanguage: 'Portuguese',
     },
@@ -104,7 +94,7 @@ export function generateBreadcrumbSchema(items: { name: string; url: string }[])
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: `https://pizzaria-wabiz.vercel.app${item.url}`,
+      item: `https://venerato-pizzas.vercel.app${item.url}`,
     })),
   };
 }

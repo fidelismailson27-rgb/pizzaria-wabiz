@@ -1,23 +1,19 @@
 'use client';
 
-import { generateInstagramLink } from '@/lib/wabiz';
-
-const POSTS_DATA = [
-  { id: 1, image: '/images/instagram/post-1.jpg', likes: 342 },
-  { id: 2, image: '/images/instagram/post-2.jpg', likes: 218 },
-  { id: 3, image: '/images/instagram/post-3.jpg', likes: 456 },
-  { id: 4, image: '/images/instagram/post-4.jpg', likes: 189 },
-];
-
 interface InstagramFeedProps {
   usuario?: string;
 }
 
-export default function InstagramFeed({ usuario = '@pizzariapremium' }: InstagramFeedProps) {
+export default function InstagramFeed({ usuario = '@veneratopizzas' }: InstagramFeedProps) {
+  const posts = Array.from({ length: 4 }, (_, i) => ({
+    id: i + 1,
+    likes: [342, 218, 456, 189][i],
+  }));
+
   return (
     <div className="space-y-3">
       <a
-        href={generateInstagramLink(usuario)}
+        href={`https://instagram.com/${usuario.replace('@', '')}`}
         target="_blank"
         rel="noopener noreferrer"
         className="text-sm font-medium text-dark-300 transition-colors hover:text-white"
@@ -25,10 +21,10 @@ export default function InstagramFeed({ usuario = '@pizzariapremium' }: Instagra
         {usuario}
       </a>
       <div className="grid grid-cols-2 gap-2">
-        {POSTS_DATA.map((post) => (
+        {posts.map((post) => (
           <a
             key={post.id}
-            href={generateInstagramLink(usuario)}
+            href={`https://instagram.com/${usuario.replace('@', '')}`}
             target="_blank"
             rel="noopener noreferrer"
             className="group relative aspect-square overflow-hidden rounded-lg bg-dark-800"

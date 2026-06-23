@@ -8,9 +8,9 @@ export default function SobrePreview() {
           <div>
             <h2 className="heading-lg mb-6">Nossa História</h2>
             <p className="mb-4 text-lg text-dark-300">
-              Desde 2010, a Pizzaria Premium vem encantando paladares com pizzas artesanais de
-              qualidade incomparável. Nascida do sonho de criar algo especial, nossa pizzaria se
-              tornou referência na cidade.
+              Há mais de 20 anos, a Venerato Pizzas vem encantando paladares com pizzas artesanais
+              de qualidade incomparável. Nascida do sonho de criar algo especial, nossa pizzaria se
+              tornou referência em Taboão da Serra e Campo Limpo.
             </p>
             <p className="mb-8 text-dark-400">
               Cada pizza é uma obra de arte, feita com ingredientes selecionados, massa fermentada
@@ -18,16 +18,16 @@ export default function SobrePreview() {
             </p>
             <div className="grid grid-cols-3 gap-6 text-center">
               <div>
-                <div className="text-3xl font-bold text-primary-500">14+</div>
-                <div className="text-sm text-dark-400">Anos de história</div>
+                <div className="text-3xl font-bold text-primary-500">20+</div>
+                <div className="text-sm text-dark-400">Anos de tradição</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-primary-500">50+</div>
-                <div className="text-sm text-dark-400">Pizzas no cardápio</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-primary-500">3</div>
+                <div className="text-3xl font-bold text-primary-500">2</div>
                 <div className="text-sm text-dark-400">Unidades</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-primary-500">100%</div>
+                <div className="text-sm text-dark-400">Artesanal</div>
               </div>
             </div>
             <Link href="/sobre" className="btn-primary mt-8 inline-flex">

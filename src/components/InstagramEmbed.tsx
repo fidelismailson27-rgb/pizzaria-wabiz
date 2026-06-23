@@ -2,7 +2,7 @@
 
 export default function InstagramEmbed() {
   return (
-    <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg dark:border-dark-700 dark:bg-dark-900">
+    <div className="overflow-hidden rounded-xl border border-border bg-white shadow-lg dark:border-dark-700 dark:bg-dark-900">
       <div className="p-4">
         <div className="flex items-center space-x-3">
           <div className="h-10 w-10 rounded-full bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 p-0.5">
@@ -11,7 +11,7 @@ export default function InstagramEmbed() {
             </div>
           </div>
           <div>
-            <p className="text-sm font-semibold text-dark-900 dark:text-white">pizzariapremium</p>
+            <p className="text-sm font-semibold text-dark-900 dark:text-white">veneratopizzas</p>
             <p className="text-xs text-dark-500">Patrocinado</p>
           </div>
         </div>
@@ -45,7 +45,7 @@ export default function InstagramEmbed() {
           </button>
         </div>
         <p className="text-sm text-dark-600 dark:text-dark-300">
-          <span className="font-semibold">pizzariapremium</span> A melhor pizza da cidade! 🍕
+          <span className="font-semibold">veneratopizzas</span> A melhor pizza da cidade! 🍕
         </p>
       </div>
     </div>
