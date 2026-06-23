@@ -4,27 +4,15 @@ import Image from 'next/image';
 export default function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden">
-      {/* Desktop: Image */}
-      <div className="absolute inset-0 hidden md:block">
-        <Image
-          src="/images/hero/hero-1.jpg"
-          alt="Pizza artesanal Venerato"
-          fill
-          className="object-cover blur-[2px] scale-105"
-          priority
-          sizes="100vw"
-        />
-      </div>
-
-      {/* Mobile: Video */}
-      <div className="absolute inset-0 md:hidden">
+      {/* Video fullscreen */}
+      <div className="absolute inset-0 z-0">
         <video
           autoPlay
           muted
           loop
           playsInline
           preload="metadata"
-          className="h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover"
           poster="/images/hero/hero-1.jpg"
         >
           <source src="/videos/venerato-hero.mp4" type="video/mp4" />
