@@ -34,13 +34,15 @@ export async function getPizzasDestaque(): Promise<Pizza[]> {
 export async function getUnidades(): Promise<Unidade[]> {
   if (!isSanityConfigured) return fallbackUnidades;
   const data = await sanityFetchUnidades();
-  return data.length > 0 ? data : fallbackUnidades;
+  if (data.length >= 2) return data;
+  return fallbackUnidades;
 }
 
 export async function getUnidadesDestaque(): Promise<Unidade[]> {
   if (!isSanityConfigured) return fallbackUnidades.filter((u) => u.destaque);
   const data = await sanityFetchUnidadesDestaque();
-  return data.length > 0 ? data : fallbackUnidades.filter((u) => u.destaque);
+  if (data.length >= 2) return data;
+  return fallbackUnidades.filter((u) => u.destaque);
 }
 
 export async function getCategorias(): Promise<Categoria[]> {
