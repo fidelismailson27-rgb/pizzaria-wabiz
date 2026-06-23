@@ -6,6 +6,7 @@ export default function Header() {
     <header className="fixed top-4 left-4 right-4 z-50 backdrop-blur-xl bg-white/10 border border-white/10 rounded-2xl shadow-2xl">
       <div className="container-custom flex h-14 items-center justify-between">
         <Link href="/" className="flex items-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/brand/logo-venerato.svg"
             alt="Venerato Pizzas - Logo"

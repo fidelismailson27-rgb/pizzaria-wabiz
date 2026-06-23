@@ -26,6 +26,7 @@ export default function Hero() {
         <div className="container-custom flex flex-col items-center text-center">
           {/* Logo */}
           <div className="mb-8 animate-fade-in">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/brand/logo-venerato.svg"
               alt="Venerato Pizzas"

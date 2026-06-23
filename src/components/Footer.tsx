@@ -22,6 +22,7 @@ export default function Footer() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
             <Link href="/" className="flex items-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/brand/logo-venerato.svg"
                 alt="Venerato Pizzas - Logo"

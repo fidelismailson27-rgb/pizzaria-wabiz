@@ -40,6 +40,7 @@ export default function Navbar() {
         <div className="glass absolute left-0 right-0 top-16 border-b border-white/10">
           <nav className="container-custom space-y-1 py-4">
             <Link href="/" className="mb-3 flex items-center px-4" onClick={() => setIsOpen(false)}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/brand/logo-venerato.svg"
                 alt="Venerato Pizzas - Logo"
