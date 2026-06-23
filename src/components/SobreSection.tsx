@@ -49,7 +49,7 @@ export default function SobreSection() {
             className="mt-12 grid grid-cols-3 gap-6"
           >
             <div className="glass-card p-6 text-center">
-              <div className="text-3xl font-extrabold text-accent md:text-4xl">10+</div>
+              <div className="text-3xl font-extrabold text-accent md:text-4xl">20+</div>
               <div className="mt-1 text-sm text-white/60">Anos de tradição</div>
             </div>
             <div className="glass-card p-6 text-center">
@@ -57,7 +57,7 @@ export default function SobreSection() {
               <div className="mt-1 text-sm text-white/60">Artesanal</div>
             </div>
             <div className="glass-card p-6 text-center">
-              <div className="text-3xl font-extrabold text-accent md:text-4xl">3</div>
+              <div className="text-3xl font-extrabold text-accent md:text-4xl">2</div>
               <div className="mt-1 text-sm text-white/60">Unidades</div>
             </div>
           </motion.div>
