@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function Hero() {
   return (
@@ -27,13 +26,10 @@ export default function Hero() {
         <div className="container-custom flex flex-col items-center text-center">
           {/* Logo */}
           <div className="mb-8 animate-fade-in">
-            <Image
-              src="/brand/logo-venerato-transparent.png"
-              width={500}
-              height={163}
+            <img
+              src="/brand/logo-venerato.svg"
               alt="Venerato Pizzas"
-              className="h-auto w-[380px] object-contain md:w-[650px] lg:w-[750px]"
-              priority
+              className="h-auto w-[420px] md:w-[650px] lg:w-[850px]"
             />
           </div>
 

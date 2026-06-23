@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import InstagramFeed from './InstagramFeed';
 
 const footerLinks = {
@@ -22,12 +21,10 @@ export default function Footer() {
       <div className="container-custom py-12">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-3">
-              <Image
-                src="/brand/logo-venerato-transparent.png"
+            <Link href="/" className="flex items-center">
+              <img
+                src="/brand/logo-venerato.svg"
                 alt="Venerato Pizzas - Logo"
-                width={160}
-                height={52}
                 className="h-auto w-36 object-contain"
               />
             </Link>
