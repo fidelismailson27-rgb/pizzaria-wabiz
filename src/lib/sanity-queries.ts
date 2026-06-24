@@ -76,6 +76,18 @@ export interface Configuracoes {
   googleAnalyticsId: string;
 }
 
+export interface GaleriaItem {
+  _id: string;
+  titulo: string;
+  descricao?: string;
+  tipo: 'imagem' | 'video';
+  ordem: number;
+  destaque: boolean;
+  imagem?: { asset?: { _ref?: string; url?: string } } | string;
+  video?: { asset?: { _ref?: string; url?: string } } | string;
+  poster?: { asset?: { _ref?: string; url?: string } } | string;
+}
+
 // Queries
 export const QUERIES = {
   categorias: `*[_type == "categoria"] | order(ordem asc) {
@@ -115,6 +127,12 @@ export const QUERIES = {
   configuracoes: `*[_type == "configuracoes"][0] {
     _id, nomePizzaria, slogan, logo, descricao, telefone, whatsapp,
     email, instagram, facebook, wabiz, googleAnalyticsId
+  }`,
+
+  galeria: `*[_type == "galeria" && ativo == true] | order(ordem asc) {
+    _id, titulo, descricao, tipo, ordem, destaque, imagem,
+    "video": video{asset->{_id, url}},
+    poster
   }`,
 };
 
@@ -196,5 +214,15 @@ export async function fetchConfiguracoes(): Promise<Configuracoes | null> {
   } catch {
     console.warn('Sanity offline, using fallback data');
     return null;
+  }
+}
+
+export async function fetchGaleria(): Promise<GaleriaItem[]> {
+  try {
+    if (!sanityClient) return [];
+    return await sanityClient.fetch(QUERIES.galeria);
+  } catch {
+    console.warn('Sanity offline, using fallback data');
+    return [];
   }
 }

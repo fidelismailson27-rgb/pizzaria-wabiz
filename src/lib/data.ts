@@ -1,4 +1,11 @@
-import type { Pizza, Unidade, Categoria, Banner, Configuracoes } from './sanity-queries';
+import type {
+  Pizza,
+  Unidade,
+  Categoria,
+  Banner,
+  Configuracoes,
+  GaleriaItem,
+} from './sanity-queries';
 import {
   fetchPizzas as sanityFetchPizzas,
   fetchPizzasDestaque as sanityFetchPizzasDestaque,
@@ -7,12 +14,14 @@ import {
   fetchCategorias as sanityFetchCategorias,
   fetchBanners as sanityFetchBanners,
   fetchConfiguracoes as sanityFetchConfiguracoes,
+  fetchGaleria as sanityFetchGaleria,
 } from './sanity-queries';
 import {
   fallbackPizzas,
   fallbackUnidades,
   fallbackCategorias,
   fallbackConfiguracoes,
+  fallbackGaleria,
 } from './sanity-fallback';
 
 const isSanityConfigured = !!(
@@ -61,4 +70,15 @@ export async function getConfiguracoes(): Promise<Configuracoes> {
   if (!isSanityConfigured) return fallbackConfiguracoes;
   const data = await sanityFetchConfiguracoes();
   return data || fallbackConfiguracoes;
+}
+
+export async function getGaleria(): Promise<GaleriaItem[]> {
+  if (!isSanityConfigured) return fallbackGaleria;
+
+  try {
+    const data = await sanityFetchGaleria();
+    return data.length > 0 ? data : fallbackGaleria;
+  } catch {
+    return fallbackGaleria;
+  }
 }

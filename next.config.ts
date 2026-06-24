@@ -13,6 +13,7 @@ const securityHeaders = [
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' https://maps.googleapis.com https://maps.gstatic.com https://cdn.sanity.io data: blob:",
+      "media-src 'self' https://cdn.sanity.io blob:",
       "font-src 'self'",
       "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.sanity.io",
       'frame-src https://www.google.com https://maps.google.com',

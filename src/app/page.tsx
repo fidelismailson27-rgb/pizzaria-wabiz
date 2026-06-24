@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import NossosDestaques from '@/components/NossosDestaques';
+import GaleriaReal from '@/components/GaleriaReal';
 import PromoBanner from '@/components/PromoBanner';
 import SobreSection from '@/components/SobreSection';
 import DestaquesSection from '@/components/DestaquesSection';
@@ -22,6 +23,7 @@ export default function Home() {
       <main>
         <Hero />
         <NossosDestaques />
+        <GaleriaReal />
         <PromoBanner />
         <SobreSection />
         <DestaquesSection />

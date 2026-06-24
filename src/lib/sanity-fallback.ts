@@ -1,4 +1,4 @@
-import type { Pizza, Unidade, Categoria, Configuracoes } from './sanity-queries';
+import type { Pizza, Unidade, Categoria, Configuracoes, GaleriaItem } from './sanity-queries';
 
 export const fallbackCategorias: Categoria[] = [
   {
@@ -149,3 +149,43 @@ export const fallbackConfiguracoes: Configuracoes = {
   wabiz: 'https://veneratopizzas.wabiz.delivery/',
   googleAnalyticsId: '',
 };
+
+export const fallbackGaleria: GaleriaItem[] = [
+  {
+    _id: 'galeria-pudim-copo',
+    titulo: 'Pudim no Copo',
+    descricao: 'Sobremesa cremosa da Venerato para completar o pedido.',
+    tipo: 'imagem',
+    imagem: '/products/pudim-copo.jpg',
+    ordem: 0,
+    destaque: true,
+  },
+  {
+    _id: 'galeria-empadas-artesanais',
+    titulo: 'Empadas Artesanais',
+    descricao: 'Empadas com massa leve e recheio generoso.',
+    tipo: 'imagem',
+    imagem: '/products/empada.jpg',
+    ordem: 1,
+    destaque: true,
+  },
+  {
+    _id: 'galeria-pizza-forno',
+    titulo: 'Pizza saindo do forno',
+    descricao: 'Aquele momento em que a pizza chega no ponto perfeito.',
+    tipo: 'imagem',
+    imagem: '/pizzas/moda-casa.jpg',
+    ordem: 2,
+    destaque: false,
+  },
+  {
+    _id: 'galeria-bastidores-venerato',
+    titulo: 'Bastidores Venerato',
+    descricao: 'Um pouco do movimento real por trás dos pedidos.',
+    tipo: 'video',
+    video: '/videos/venerato-hero.mp4',
+    poster: '/images/hero/hero-1.jpg',
+    ordem: 3,
+    destaque: false,
+  },
+];
