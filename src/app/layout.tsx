@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 import WhatsAppFloat from '@/components/WhatsAppFloat';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 import './globals.css';
 
 const inter = Inter({
@@ -104,6 +105,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${inter.variable} ${playfair.variable}`}>
       <body className="min-h-screen font-sans antialiased" style={{ backgroundColor: '#FFF8E7' }}>
+        <GoogleAnalytics />
         {children}
         <WhatsAppFloat telefone="5511947445932" nomeUnidade="Venerato Pizzas" />
       </body>

@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { trackCTAClick } from '@/lib/analytics';
 
 export default function PromoBanner() {
   return (
@@ -18,18 +19,30 @@ export default function PromoBanner() {
               🔥 Venerato do Dia
             </span>
             <h2 className="text-2xl font-extrabold text-white sm:text-3xl">
-              Sabor em destaque hoje
+              Vários sabores por apenas
             </h2>
           </div>
 
-          <a
-            href="https://veneratopizzas.wabiz.delivery/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-2xl bg-white px-8 py-4 text-base font-bold text-red-600 shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl active:scale-95 sm:px-10 sm:text-lg"
-          >
-            Pedir Agora
-          </a>
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-8">
+            <span className="text-5xl font-extrabold text-white drop-shadow-lg md:text-6xl">
+              R$ 60,99
+            </span>
+            <a
+              href="https://veneratopizzas.wabiz.delivery/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl bg-white px-8 py-4 text-base font-bold text-red-600 shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl active:scale-95 sm:px-10 sm:text-lg"
+              onClick={() =>
+                trackCTAClick(
+                  'Pedir Agora',
+                  'promo_banner',
+                  'https://veneratopizzas.wabiz.delivery/'
+                )
+              }
+            >
+              Pedir Agora
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { generateGoogleMapsLink, generateWhatsAppLink } from '@/lib/wabiz';
+import { trackCTAClick } from '@/lib/analytics';
 
 const unidades = [
   {
@@ -89,6 +90,13 @@ export default function UnidadesSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary flex-1 justify-center text-sm"
+                  onClick={() =>
+                    trackCTAClick(
+                      'Como Chegar',
+                      'unidades',
+                      generateGoogleMapsLink(unidade.endereco)
+                    )
+                  }
                 >
                   Como Chegar
                 </a>
@@ -100,6 +108,13 @@ export default function UnidadesSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary flex-1 justify-center text-sm"
+                  onClick={() =>
+                    trackCTAClick(
+                      'Pedir Nessa Unidade',
+                      'unidades',
+                      generateWhatsAppLink(unidade.whatsapp)
+                    )
+                  }
                 >
                   Pedir Nessa Unidade
                 </a>

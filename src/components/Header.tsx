@@ -1,5 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import Navbar from './Navbar';
+import { trackCTAClick } from '@/lib/analytics';
 
 export default function Header() {
   return (
@@ -38,6 +41,9 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             className="btn-accent text-sm"
+            onClick={() =>
+              trackCTAClick('Pedir Agora', 'header', 'https://veneratopizzas.wabiz.delivery/')
+            }
           >
             Pedir Agora
           </a>

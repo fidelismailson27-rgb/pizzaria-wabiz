@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { trackCTAClick } from '@/lib/analytics';
 
 export default function CtaFinal() {
   return (
@@ -21,6 +22,9 @@ export default function CtaFinal() {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-2xl bg-accent px-10 py-5 text-lg font-bold text-black shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl active:scale-95"
+            onClick={() =>
+              trackCTAClick('Fazer Pedido', 'cta_final', 'https://veneratopizzas.wabiz.delivery/')
+            }
           >
             Fazer Pedido
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { trackCTAClick } from '@/lib/analytics';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -74,7 +75,10 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full text-center btn-accent"
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  trackCTAClick('Pedir Agora', 'navbar', 'https://veneratopizzas.wabiz.delivery/');
+                  setIsOpen(false);
+                }}
               >
                 Pedir Agora
               </a>

@@ -1,5 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import { generateWhatsAppLink, getWhatsAppMensagemUnidade } from '@/lib/wabiz';
+import { trackCTAClick } from '@/lib/analytics';
 import type { Unidade } from '@/lib/sanity-queries';
 
 interface UnidadeCardProps {
@@ -7,6 +10,11 @@ interface UnidadeCardProps {
 }
 
 export default function UnidadeCard({ unidade }: UnidadeCardProps) {
+  const whatsappUrl = generateWhatsAppLink(
+    unidade.whatsapp,
+    getWhatsAppMensagemUnidade(unidade.nome)
+  );
+
   return (
     <div className="group card transition-all hover:-translate-y-1">
       <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 text-primary-500 dark:bg-primary-900/20">
@@ -26,14 +34,18 @@ export default function UnidadeCard({ unidade }: UnidadeCardProps) {
         <Link
           href={`/localizacao/${unidade.slug.current}`}
           className="btn-primary flex-1 justify-center text-sm"
+          onClick={() =>
+            trackCTAClick('Ver Detalhes', 'localizacao', `/localizacao/${unidade.slug.current}`)
+          }
         >
           Ver Detalhes
         </Link>
         <a
-          href={generateWhatsAppLink(unidade.whatsapp, getWhatsAppMensagemUnidade(unidade.nome))}
+          href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="btn-whatsapp flex-1 justify-center text-sm"
+          onClick={() => trackCTAClick('WhatsApp', 'localizacao', whatsappUrl)}
         >
           WhatsApp
         </a>
