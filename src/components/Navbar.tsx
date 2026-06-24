@@ -11,7 +11,7 @@ export default function Navbar() {
     <div className="md:hidden">
       <button
         type="button"
-        className="inline-flex items-center justify-center rounded-lg p-2 text-black/70 transition-colors hover:text-black dark:text-white/70 dark:hover:text-white"
+        className="inline-flex items-center justify-center rounded-lg p-2 text-black/70 transition-colors hover:text-black"
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-label="Menu de navegação"
@@ -38,7 +38,7 @@ export default function Navbar() {
       </button>
 
       {isOpen && (
-        <div className="absolute left-0 right-0 top-16 rounded-2xl border border-black/5 bg-white/95 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-white/10">
+        <div className="absolute left-0 right-0 top-16 rounded-2xl border border-black/5 bg-white/95 shadow-2xl backdrop-blur-xl">
           <nav className="container-custom space-y-1 py-4">
             <Link href="/" className="mb-3 flex items-center px-4" onClick={() => setIsOpen(false)}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -50,21 +50,21 @@ export default function Navbar() {
             </Link>
             <Link
               href="/cardapio"
-              className="block rounded-xl px-4 py-3 text-base font-medium text-black/80 transition-all hover:bg-black/5 hover:text-black dark:text-white/80 dark:hover:bg-white/10 dark:hover:text-white"
+              className="block rounded-xl px-4 py-3 text-base font-medium text-black/80 transition-all hover:bg-black/5 hover:text-black"
               onClick={() => setIsOpen(false)}
             >
               Cardápio
             </Link>
             <Link
               href="/localizacao"
-              className="block rounded-xl px-4 py-3 text-base font-medium text-black/80 transition-all hover:bg-black/5 hover:text-black dark:text-white/80 dark:hover:bg-white/10 dark:hover:text-white"
+              className="block rounded-xl px-4 py-3 text-base font-medium text-black/80 transition-all hover:bg-black/5 hover:text-black"
               onClick={() => setIsOpen(false)}
             >
               Localização
             </Link>
             <Link
               href="/sobre"
-              className="block rounded-xl px-4 py-3 text-base font-medium text-black/80 transition-all hover:bg-black/5 hover:text-black dark:text-white/80 dark:hover:bg-white/10 dark:hover:text-white"
+              className="block rounded-xl px-4 py-3 text-base font-medium text-black/80 transition-all hover:bg-black/5 hover:text-black"
               onClick={() => setIsOpen(false)}
             >
               Sobre

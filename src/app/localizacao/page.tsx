@@ -19,8 +19,8 @@ export default async function LocalizacaoPage() {
       <main className="section-padding">
         <div className="container-custom">
           <div className="mb-12 text-center">
-            <h1 className="heading-xl mb-4 text-black dark:text-white">Nossas Unidades</h1>
-            <p className="mx-auto max-w-2xl text-dark-600 dark:text-dark-300">
+            <h1 className="heading-xl mb-4 text-black">Nossas Unidades</h1>
+            <p className="mx-auto max-w-2xl text-dark-600">
               Encontre a Venerato Pizzas mais perto de você. 2 unidades atendendo Taboão da Serra e
               Campo Limpo.
             </p>

@@ -6,7 +6,7 @@ import { trackCTAClick } from '@/lib/analytics';
 
 export default function Header() {
   return (
-    <header className="fixed top-4 left-4 right-4 z-50 backdrop-blur-xl bg-white/80 border border-black/5 rounded-2xl shadow-2xl dark:bg-white/10 dark:border-white/10">
+    <header className="fixed top-4 left-4 right-4 z-50 rounded-2xl border border-black/5 bg-white/80 shadow-2xl backdrop-blur-xl">
       <div className="container-custom flex h-14 items-center justify-between">
         <Link href="/" className="flex items-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -20,19 +20,19 @@ export default function Header() {
         <nav className="hidden items-center space-x-6 md:flex">
           <Link
             href="/cardapio"
-            className="text-sm font-medium text-black/70 transition-colors hover:text-black dark:text-white/70 dark:hover:text-white"
+            className="text-sm font-medium text-black/70 transition-colors hover:text-black"
           >
             Cardápio
           </Link>
           <Link
             href="/localizacao"
-            className="text-sm font-medium text-black/70 transition-colors hover:text-black dark:text-white/70 dark:hover:text-white"
+            className="text-sm font-medium text-black/70 transition-colors hover:text-black"
           >
             Localização
           </Link>
           <Link
             href="/sobre"
-            className="text-sm font-medium text-black/70 transition-colors hover:text-black dark:text-white/70 dark:hover:text-white"
+            className="text-sm font-medium text-black/70 transition-colors hover:text-black"
           >
             Sobre
           </Link>

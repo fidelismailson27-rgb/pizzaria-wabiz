@@ -63,17 +63,15 @@ export default async function UnidadePage({ params }: PageProps) {
       <main className="section-padding">
         <div className="container-custom">
           <div className="mb-12">
-            <h1 className="heading-xl mb-4">{unidade.nome}</h1>
-            <p className="text-lg text-dark-600 dark:text-dark-300">{unidade.endereco}</p>
+            <h1 className="heading-xl mb-4 text-black">{unidade.nome}</h1>
+            <p className="text-lg text-dark-600">{unidade.endereco}</p>
           </div>
 
           <div className="grid gap-8 lg:grid-cols-2">
             <div className="space-y-6">
               <div className="card">
-                <h2 className="mb-4 text-xl font-semibold text-dark-900 dark:text-white">
-                  Informações
-                </h2>
-                <div className="space-y-3 text-dark-600 dark:text-dark-300">
+                <h2 className="mb-4 text-xl font-semibold text-dark-900">Informações</h2>
+                <div className="space-y-3 text-dark-600">
                   <p>📞 {unidade.telefone}</p>
                   <p>✉️ {unidade.email}</p>
                   <p>📍 {unidade.cep}</p>
@@ -81,14 +79,14 @@ export default async function UnidadePage({ params }: PageProps) {
               </div>
 
               <div className="card">
-                <h2 className="mb-4 text-xl font-semibold text-dark-900 dark:text-white">
+                <h2 className="mb-4 text-xl font-semibold text-dark-900">
                   Horário de Funcionamento
                 </h2>
                 <div className="space-y-2 text-sm">
                   {Object.entries(unidade.horarios || {}).map(([dia, horario]) => (
                     <div key={dia} className="flex justify-between">
-                      <span className="capitalize text-dark-500 dark:text-dark-400">{dia}</span>
-                      <span className="font-medium text-dark-900 dark:text-white">{horario}</span>
+                      <span className="capitalize text-dark-500">{dia}</span>
+                      <span className="font-medium text-dark-900">{horario}</span>
                     </div>
                   ))}
                 </div>

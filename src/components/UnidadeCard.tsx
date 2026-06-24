@@ -17,12 +17,12 @@ export default function UnidadeCard({ unidade }: UnidadeCardProps) {
 
   return (
     <div className="group card transition-all hover:-translate-y-1">
-      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 text-primary-500 dark:bg-primary-900/20">
+      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 text-primary-500">
         📍
       </div>
 
-      <h3 className="text-xl font-semibold text-dark-900 dark:text-white">{unidade.nome}</h3>
-      <p className="mt-2 text-dark-500 dark:text-dark-400">{unidade.endereco}</p>
+      <h3 className="text-xl font-semibold text-dark-900">{unidade.nome}</h3>
+      <p className="mt-2 text-dark-500">{unidade.endereco}</p>
 
       <div className="mt-4 space-y-1 text-sm text-dark-400">
         <p>📞 {unidade.telefone}</p>
