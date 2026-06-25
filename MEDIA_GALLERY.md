@@ -1,101 +1,97 @@
 # Galeria de Mídia Venerato
 
-Este projeto possui uma galeria editável pelo Sanity para fotos e vídeos reais da Venerato. A home usa os itens ativos do schema `galeria` e cai para fallback local quando o Sanity está vazio ou indisponível.
+A home possui uma galeria editável pelo Sanity. O fluxo recomendado é enviar fotos e vídeos pelo próprio Sanity Studio para o Cloudinary. O site usa a URL Cloudinary otimizada quando ela existe e mantém fallback para uploads do Sanity e mídias locais.
 
-## Campos no Sanity
+## Cloudinary
 
-Crie documentos do tipo **Galeria** com:
+1. Crie uma conta em <https://cloudinary.com/>.
+2. No painel do Cloudinary, copie:
+   - Cloud name
+   - API key
+   - API secret
+3. Configure as variáveis localmente em `.env.local`:
+
+```bash
+CLOUDINARY_CLOUD_NAME=seu_cloud_name
+CLOUDINARY_API_KEY=sua_api_key
+CLOUDINARY_API_SECRET=seu_api_secret
+```
+
+4. Configure as mesmas variáveis na Vercel:
+   - Project Settings
+   - Environment Variables
+   - Adicione `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY` e `CLOUDINARY_API_SECRET`
+   - Redeploy após salvar
+
+Nunca compartilhe `CLOUDINARY_API_SECRET` e nunca commite `.env.local`.
+
+## Testar conexão
+
+```bash
+npm run cloudinary:check
+```
+
+Resultado esperado:
+
+```text
+CLOUDINARY CONNECTION OK
+```
+
+O script mascara a API key e não imprime o secret.
+
+## Subir mídia pelo Sanity
+
+1. Abra o Sanity Studio.
+2. Crie ou edite um documento do tipo **Galeria**.
+3. Use o campo **Upload Cloudinary**.
+4. Selecione uma foto ou vídeo.
+5. Aguarde o estado **Upload concluído**.
+6. O Studio preenche automaticamente:
+   - `cloudinaryUrl`
+   - `cloudinaryPosterUrl`, quando for vídeo e houver poster gerado
+   - `cloudinaryPublicId`
+   - `tipo`, como `imagem` ou `video`
+7. Salve/publique o documento.
+
+Campos disponíveis:
 
 - `titulo`: nome curto da mídia.
 - `descricao`: texto opcional para aparecer sobre a mídia.
-- `tipo`: escolha `imagem` ou `video`.
-- `cloudinaryUrl`: URL completa do Cloudinary (prioritário sobre upload do Sanity).
-- `cloudinaryPosterUrl`: URL do poster/capa no Cloudinary para vídeos.
-- `imagem`: foto principal via Sanity (usada se `cloudinaryUrl` estiver vazio).
-- `video`: arquivo de vídeo via Sanity (usado se `cloudinaryUrl` estiver vazio).
-- `poster`: imagem de capa via Sanity (usada se `cloudinaryPosterUrl` estiver vazio).
+- `tipo`: `imagem` ou `video`.
+- `uploadCloudinary`: input de upload direto para Cloudinary.
+- `cloudinaryUrl`: URL otimizada da mídia no Cloudinary.
+- `cloudinaryPosterUrl`: poster/capa do vídeo no Cloudinary.
+- `cloudinaryPublicId`: identificador do asset no Cloudinary.
+- `imagem`: fallback/manual via Sanity para fotos.
+- `video`: fallback/manual via Sanity para vídeos.
+- `poster`: fallback/manual via Sanity para poster de vídeo.
 - `ordem`: número para ordenar a galeria.
-- `destaque`: marca cards maiores na home.
-- `ativo`: deixe ligado para exibir.
+- `destaque`: destaca o card na home.
+- `ativo`: exibe quando ligado.
 
-## Uso do Cloudinary (recomendado)
+## Fallback manual
 
-O Cloudinary é a forma recomendada de hospedar mídia, pois otimiza automaticamente imagens e vídeos.
+Se o upload direto falhar, ainda é possível colar uma URL manualmente em `cloudinaryUrl` e, para vídeo, preencher `cloudinaryPosterUrl`.
 
-### Configuração
+Também é possível usar upload nativo do Sanity pelos campos `imagem`, `video` e `poster`. A prioridade usada pela home é:
 
-1. Crie uma conta no [Cloudinary](https://cloudinary.com/).
-2. Faça upload das imagens/vídeos no painel do Cloudinary.
-3. Copie a URL completa de cada mídia.
-4. No Sanity, cole a URL no campo `cloudinaryUrl`.
+1. `cloudinaryUrl`
+2. Upload do Sanity (`imagem` ou `video`)
+3. Fallback local
+4. Placeholder "Mídia em breve"
 
-### Otimização automática
+## Limites recomendados
 
-O componente `GaleriaReal` aplica otimizações automaticamente:
+- Fotos: até 20MB.
+- Vídeos: até 100MB.
+- Ideal para vídeos: 3MB a 12MB.
+- Evite vídeos de 30MB+ quando possível.
 
-**Imagens:**
+Cloudinary otimiza a entrega, mas arquivos muito grandes ainda deixam upload, processamento e preview mais lentos.
 
-- `f_auto` → formato automático (WebP/AVIF conforme o browser)
-- `q_auto` → qualidade automática
-- `w_1200` → largura máxima de 1200px
+## Otimização local opcional
 
-**Vídeos:**
-
-- `f_auto` → formato automático
-- `q_auto` → qualidade automática
-
-### Exemplo de URL Cloudinary
-
-```
-https://res.cloudinary.com/seu-cloud/raw/upload/v1234567890/foto-pizza.jpg
-```
-
-Após a otimização automática:
-
-```
-https://res.cloudinary.com/seu-cloud/raw/upload/f_auto,q_auto,w_1200/v1234567890/foto-pizza.jpg
-```
-
-### Poster para vídeos
-
-Para vídeos, configure `cloudinaryPosterUrl` com a URL de uma imagem de capa. Se não configurado, o vídeo será exibido sem poster.
-
-## Upload via Sanity (alternativa)
-
-Se preferir não usar Cloudinary, faça upload direto no Sanity:
-
-### Como subir fotos
-
-Use fotos reais, bem iluminadas e sem texto embutido sempre que possível. Antes de subir fotos grandes, otimize para WebP:
-
-```bash
-bash scripts/optimize-media.sh
-```
-
-Coloque os arquivos originais em `public/gallery/raw`. O script gera imagens WebP em `public/gallery` com largura máxima de 1600px e qualidade entre 75 e 82.
-
-### Como subir vídeos
-
-Prefira vídeos curtos, verticais ou horizontais bem enquadrados, com 6 a 15 segundos. O limite recomendado para publicar é **3MB a 12MB** por vídeo. Evite vídeos de **30MB+**, pois eles prejudicam muito o carregamento mobile.
-
-No Sanity:
-
-1. Selecione `tipo = video`.
-2. Suba o arquivo otimizado no campo `video`.
-3. Suba um `poster` JPG/WebP leve.
-4. Preencha `ordem`, `destaque` e `ativo`.
-
-## Prioridade de mídia
-
-O componente `GaleriaReal` verifica as fontes nesta ordem:
-
-1. `cloudinaryUrl` (Cloudinary) — prioridade máxima
-2. `imagem`/`video` (Sanity upload) — fallback
-3. Placeholder "Mídia em breve" — se nada estiver configurado
-
-## Otimização local
-
-O script `scripts/optimize-media.sh` procura arquivos em:
+O script `scripts/optimize-media.sh` processa arquivos colocados em:
 
 ```text
 public/gallery/raw
@@ -117,31 +113,42 @@ Vídeos são exportados como MP4 H.264 compatível com mobile:
 - sem áudio por padrão
 - poster JPG gerado automaticamente
 
-Para manter áudio:
+Imagens são exportadas como WebP:
+
+- largura máxima 1600px
+- qualidade padrão 80, configurável por `IMAGE_QUALITY`
+
+Uso:
+
+```bash
+bash scripts/optimize-media.sh
+```
+
+Manter áudio:
 
 ```bash
 KEEP_AUDIO=1 bash scripts/optimize-media.sh
 ```
 
-Para ajustar qualidade:
+Ajustar qualidade:
 
 ```bash
 VIDEO_CRF=28 IMAGE_QUALITY=82 bash scripts/optimize-media.sh
 ```
 
-Se faltar dependência, instale:
+Se faltar dependência:
 
 ```bash
 apt install -y ffmpeg imagemagick webp
 ```
 
-## Fallback local
+## Fallback local atual
 
-Quando o Sanity estiver vazio ou falhar, a home usa:
+Quando o Sanity está vazio ou indisponível, a home usa:
 
 - `public/products/pudim-copo.jpg`
 - `public/products/empada.jpg`
 - `public/pizzas/moda-casa.jpg`
 - `public/videos/venerato-hero.mp4`
 
-Isso mantém o build e a home funcionando mesmo sem conteúdo publicado no Sanity.
+Isso mantém build e home funcionando mesmo sem conteúdo publicado no Sanity.

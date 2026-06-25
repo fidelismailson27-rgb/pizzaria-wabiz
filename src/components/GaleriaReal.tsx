@@ -2,32 +2,15 @@ import Image from 'next/image';
 import type { GaleriaItem } from '@/lib/sanity-queries';
 import { getGaleria } from '@/lib/data';
 import { urlForImage } from '@/lib/sanity';
-
-function getCloudinaryImageUrl(url: string): string {
-  if (!url) return '';
-  if (url.includes('cloudinary.com') && !url.includes('/upload/')) {
-    return url;
-  }
-  if (url.includes('cloudinary.com')) {
-    return url.replace('/upload/', '/upload/f_auto,q_auto,w_1200/');
-  }
-  return url;
-}
-
-function getCloudinaryVideoUrl(url: string): string {
-  if (!url) return '';
-  if (url.includes('cloudinary.com') && !url.includes('/upload/')) {
-    return url;
-  }
-  if (url.includes('cloudinary.com')) {
-    return url.replace('/upload/', '/upload/f_auto,q_auto/');
-  }
-  return url;
-}
+import {
+  buildCloudinaryImageUrl,
+  buildCloudinaryPosterUrl,
+  buildCloudinaryVideoUrl,
+} from '@/lib/cloudinary';
 
 function resolveImageSource(item: GaleriaItem) {
   if (item.cloudinaryUrl) {
-    return getCloudinaryImageUrl(item.cloudinaryUrl);
+    return buildCloudinaryImageUrl(item.cloudinaryUrl);
   }
   if (!item.imagem) return null;
   if (typeof item.imagem === 'string') return item.imagem;
@@ -36,7 +19,7 @@ function resolveImageSource(item: GaleriaItem) {
 
 function resolvePosterSource(item: GaleriaItem) {
   if (item.cloudinaryPosterUrl) {
-    return getCloudinaryImageUrl(item.cloudinaryPosterUrl);
+    return buildCloudinaryPosterUrl(item.cloudinaryPosterUrl);
   }
   if (!item.poster) return null;
   if (typeof item.poster === 'string') return item.poster;
@@ -45,7 +28,7 @@ function resolvePosterSource(item: GaleriaItem) {
 
 function resolveVideoSource(item: GaleriaItem) {
   if (item.cloudinaryUrl && item.tipo === 'video') {
-    return getCloudinaryVideoUrl(item.cloudinaryUrl);
+    return buildCloudinaryVideoUrl(item.cloudinaryUrl);
   }
   if (!item.video) return null;
   if (typeof item.video === 'string') return item.video;

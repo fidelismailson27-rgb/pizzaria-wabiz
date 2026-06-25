@@ -10,6 +10,7 @@
     "lint:fix": "next lint --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css}\" \"sanity/**/*.{ts,tsx,js,json}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css}\" \"sanity/**/*.{ts,tsx,js,json}\"",
+    "cloudinary:check": "node scripts/check-cloudinary.js",
     "analyze": "ANALYZE=true next build",
     "test": "echo \"No tests yet\""
   },
