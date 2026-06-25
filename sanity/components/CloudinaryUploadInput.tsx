@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, type ChangeEvent } from 'react';
 import { Box, Button, Card, Flex, Stack, Text } from '@sanity/ui';
 import { PatchEvent, set, unset, type StringInputProps } from 'sanity';
