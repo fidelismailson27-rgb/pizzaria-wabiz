@@ -34,11 +34,13 @@ O Cloudinary é a forma recomendada de hospedar mídia, pois otimiza automaticam
 O componente `GaleriaReal` aplica otimizações automaticamente:
 
 **Imagens:**
+
 - `f_auto` → formato automático (WebP/AVIF conforme o browser)
 - `q_auto` → qualidade automática
 - `w_1200` → largura máxima de 1200px
 
 **Vídeos:**
+
 - `f_auto` → formato automático
 - `q_auto` → qualidade automática
 
@@ -49,6 +51,7 @@ https://res.cloudinary.com/seu-cloud/raw/upload/v1234567890/foto-pizza.jpg
 ```
 
 Após a otimização automática:
+
 ```
 https://res.cloudinary.com/seu-cloud/raw/upload/f_auto,q_auto,w_1200/v1234567890/foto-pizza.jpg
 ```
