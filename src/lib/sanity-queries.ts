@@ -77,6 +77,8 @@ export interface Configuracoes {
 }
 
 export interface GaleriaItem {
+  cloudinaryUrl?: string;
+  cloudinaryPosterUrl?: string;
   _id: string;
   titulo: string;
   descricao?: string;
@@ -130,7 +132,7 @@ export const QUERIES = {
   }`,
 
   galeria: `*[_type == "galeria" && ativo == true] | order(ordem asc) {
-    _id, titulo, descricao, tipo, ordem, destaque, imagem,
+    _id, titulo, descricao, tipo, ordem, destaque, imagem, cloudinaryUrl, cloudinaryPosterUrl,
     "video": video{asset->{_id, url}},
     poster
   }`,

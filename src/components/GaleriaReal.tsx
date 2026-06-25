@@ -3,16 +3,53 @@ import type { GaleriaItem } from '@/lib/sanity-queries';
 import { getGaleria } from '@/lib/data';
 import { urlForImage } from '@/lib/sanity';
 
-function resolveImageSource(source: GaleriaItem['imagem'] | GaleriaItem['poster']) {
-  if (!source) return null;
-  if (typeof source === 'string') return source;
-  return urlForImage(source);
+function getCloudinaryImageUrl(url: string): string {
+  if (!url) return '';
+  if (url.includes('cloudinary.com') && !url.includes('/upload/')) {
+    return url;
+  }
+  if (url.includes('cloudinary.com')) {
+    return url.replace('/upload/', '/upload/f_auto,q_auto,w_1200/');
+  }
+  return url;
 }
 
-function resolveVideoSource(source: GaleriaItem['video']) {
-  if (!source) return null;
-  if (typeof source === 'string') return source;
-  return source.asset?.url || null;
+function getCloudinaryVideoUrl(url: string): string {
+  if (!url) return '';
+  if (url.includes('cloudinary.com') && !url.includes('/upload/')) {
+    return url;
+  }
+  if (url.includes('cloudinary.com')) {
+    return url.replace('/upload/', '/upload/f_auto,q_auto/');
+  }
+  return url;
+}
+
+function resolveImageSource(item: GaleriaItem) {
+  if (item.cloudinaryUrl) {
+    return getCloudinaryImageUrl(item.cloudinaryUrl);
+  }
+  if (!item.imagem) return null;
+  if (typeof item.imagem === 'string') return item.imagem;
+  return urlForImage(item.imagem);
+}
+
+function resolvePosterSource(item: GaleriaItem) {
+  if (item.cloudinaryPosterUrl) {
+    return getCloudinaryImageUrl(item.cloudinaryPosterUrl);
+  }
+  if (!item.poster) return null;
+  if (typeof item.poster === 'string') return item.poster;
+  return urlForImage(item.poster);
+}
+
+function resolveVideoSource(item: GaleriaItem) {
+  if (item.cloudinaryUrl && item.tipo === 'video') {
+    return getCloudinaryVideoUrl(item.cloudinaryUrl);
+  }
+  if (!item.video) return null;
+  if (typeof item.video === 'string') return item.video;
+  return item.video.asset?.url || null;
 }
 
 export default async function GaleriaReal() {
@@ -40,9 +77,9 @@ export default async function GaleriaReal() {
 
         <div className="grid auto-rows-[240px] gap-5 md:grid-cols-2 lg:grid-cols-4">
           {itens.map((item, index) => {
-            const imageSource = resolveImageSource(item.imagem);
-            const posterSource = resolveImageSource(item.poster);
-            const videoSource = resolveVideoSource(item.video);
+            const imageSource = resolveImageSource(item);
+            const posterSource = resolvePosterSource(item);
+            const videoSource = resolveVideoSource(item);
             const isFeatured = item.destaque || index === 0;
             const mediaClassName = isFeatured ? 'md:col-span-2 md:row-span-2' : '';
 
