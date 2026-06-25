@@ -49,6 +49,22 @@ const securityHeaders = [
   },
 ];
 
+const studioSecurityHeaders = securityHeaders
+  .filter((header) => header.key !== 'X-Frame-Options')
+  .map((header) => {
+    if (header.key !== 'Content-Security-Policy') {
+      return header;
+    }
+
+    return {
+      ...header,
+      value: header.value.replace(
+        "frame-ancestors 'none'",
+        "frame-ancestors 'self' https://www.sanity.io https://*.sanity.io",
+      ),
+    };
+  });
+
 const nextConfig: NextConfig = {
   output: 'standalone',
   reactStrictMode: true,
@@ -62,8 +78,16 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: '/(.*)',
+        source: '/((?!studio(?:/.*)?$).*)',
         headers: securityHeaders,
+      },
+      {
+        source: '/studio',
+        headers: studioSecurityHeaders,
+      },
+      {
+        source: '/studio/:path*',
+        headers: studioSecurityHeaders,
       },
       {
         source: '/api/:path*',
