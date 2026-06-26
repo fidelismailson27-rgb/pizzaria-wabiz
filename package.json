@@ -10,19 +10,21 @@
     "lint:fix": "next lint --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css}\" \"sanity/**/*.{ts,tsx,js,json}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css}\" \"sanity/**/*.{ts,tsx,js,json}\"",
+    "cloudinary:check": "node scripts/check-cloudinary.js",
     "analyze": "ANALYZE=true next build",
     "test": "echo \"No tests yet\""
   },
   "dependencies": {
     "@sanity/client": "^7.23.0",
     "@sanity/image-url": "^2.1.1",
-    "@sanity/vision": "^5.31.1",
+    "@sanity/vision": "^4.22.0",
     "cloudinary": "^2.10.0",
     "framer-motion": "^12.40.0",
     "next": "^15.0.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "sanity": "^5.31.1",
+    "next-sanity": "^11.6.13",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "sanity": "^4.22.0",
     "styled-components": "^6.4.2"
   },
   "devDependencies": {

@@ -79,12 +79,14 @@ export interface Configuracoes {
 export interface GaleriaItem {
   cloudinaryUrl?: string;
   cloudinaryPosterUrl?: string;
+  cloudinaryPublicId?: string;
   _id: string;
   titulo: string;
   descricao?: string;
   tipo: 'imagem' | 'video';
   ordem: number;
   destaque: boolean;
+  ativo?: boolean;
   imagem?: { asset?: { _ref?: string; url?: string } } | string;
   video?: { asset?: { _ref?: string; url?: string } } | string;
   poster?: { asset?: { _ref?: string; url?: string } } | string;
@@ -132,7 +134,8 @@ export const QUERIES = {
   }`,
 
   galeria: `*[_type == "galeria" && ativo == true] | order(ordem asc) {
-    _id, titulo, descricao, tipo, ordem, destaque, imagem, cloudinaryUrl, cloudinaryPosterUrl,
+    _id, titulo, descricao, tipo, ordem, destaque, ativo,
+    cloudinaryUrl, cloudinaryPosterUrl, cloudinaryPublicId, imagem,
     "video": video{asset->{_id, url}},
     poster
   }`,

@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity';
+import CloudinaryUploadInput from '../components/CloudinaryUploadInput';
 
 export default defineType({
   name: 'galeria',
@@ -32,6 +33,15 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'uploadCloudinary',
+      title: 'Upload Cloudinary',
+      type: 'string',
+      description: 'Use este campo para enviar foto ou vídeo direto ao Cloudinary.',
+      components: {
+        input: CloudinaryUploadInput,
+      },
+    }),
+    defineField({
       name: 'cloudinaryUrl',
       title: 'URL Cloudinary (imagem ou vídeo)',
       type: 'url',
@@ -43,6 +53,12 @@ export default defineType({
       type: 'url',
       description: 'URL do poster/capa no Cloudinary para vídeos.',
       hidden: ({ parent }) => parent?.tipo !== 'video',
+    }),
+    defineField({
+      name: 'cloudinaryPublicId',
+      title: 'Public ID Cloudinary',
+      type: 'string',
+      readOnly: true,
     }),
     defineField({
       name: 'imagem',
