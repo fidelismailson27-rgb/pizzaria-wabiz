@@ -51,7 +51,7 @@ const securityHeaders = [
   },
 ];
 
-const studioSecurityHeaders = securityHeaders
+const sanityFrameSecurityHeaders = securityHeaders
   .filter((header) => header.key !== 'X-Frame-Options')
   .map((header) => {
     if (header.key !== 'Content-Security-Policy') return header;
@@ -77,11 +77,15 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: '/studio/:path*',
-        headers: studioSecurityHeaders,
+        source: '/',
+        headers: sanityFrameSecurityHeaders,
       },
       {
-        source: '/((?!studio(?:/.*)?$).*)',
+        source: '/studio/:path*',
+        headers: sanityFrameSecurityHeaders,
+      },
+      {
+        source: '/((?!$)(?!studio(?:/.*)?$).*)',
         headers: securityHeaders,
       },
       {
