@@ -18,11 +18,22 @@ function getTipo(resourceType: string) {
   return resourceType === 'video' ? 'video' : 'imagem';
 }
 
+function parseUploadResponse(text: string): (UploadResponse & { error?: string }) | null {
+  if (!text) return null;
+
+  try {
+    return JSON.parse(text) as UploadResponse & { error?: string };
+  } catch {
+    return null;
+  }
+}
+
 export default function CloudinaryUploadInput(props: StringInputProps) {
   const { onChange, value } = props;
   const [status, setStatus] = useState<UploadStatus>('idle');
   const [error, setError] = useState<string | null>(null);
   const [preview, setPreview] = useState<UploadResponse | null>(null);
+  const [inputKey, setInputKey] = useState(0);
 
   async function handleFileChange(event: ChangeEvent<HTMLInputElement>) {
     const file = event.currentTarget.files?.[0];
@@ -41,10 +52,19 @@ export default function CloudinaryUploadInput(props: StringInputProps) {
         method: 'POST',
         body: formData,
       });
-      const result = (await response.json()) as UploadResponse & { error?: string };
+      const responseText = await response.text();
+      const result = parseUploadResponse(responseText);
 
       if (!response.ok) {
-        throw new Error(result.error || 'Falha no upload para Cloudinary.');
+        throw new Error(
+          result?.error ||
+            responseText ||
+            `Falha no upload para Cloudinary. Status ${response.status}.`
+        );
+      }
+
+      if (!result?.secure_url || !result.public_id || !result.resource_type) {
+        throw new Error('Resposta inválida do upload Cloudinary.');
       }
 
       const cloudinaryUrl = result.optimized_url || result.secure_url;
@@ -68,7 +88,7 @@ export default function CloudinaryUploadInput(props: StringInputProps) {
       setStatus('error');
       setError(uploadError instanceof Error ? uploadError.message : 'Erro desconhecido no upload.');
     } finally {
-      event.currentTarget.value = '';
+      setInputKey((currentKey) => currentKey + 1);
     }
   }
 
@@ -94,6 +114,7 @@ export default function CloudinaryUploadInput(props: StringInputProps) {
               disabled={status === 'uploading'}
             >
               <input
+                key={inputKey}
                 accept="image/*,video/*"
                 disabled={status === 'uploading'}
                 onChange={handleFileChange}

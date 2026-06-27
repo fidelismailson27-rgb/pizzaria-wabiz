@@ -8,6 +8,7 @@ const MAX_VIDEO_BYTES = 100 * 1024 * 1024;
 const DEFAULT_FOLDER = 'venerato/galeria';
 
 type ResourceType = 'image' | 'video' | 'auto';
+type ValidationResult = { error: string; status: 400 | 413 } | null;
 
 function getCloudinaryConfig() {
   const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
@@ -28,53 +29,40 @@ function getResourceType(file: File, requested: FormDataEntryValue | null): Reso
   return 'auto';
 }
 
-function validateFile(file: File, resourceType: ResourceType) {
+function validateFile(file: File, resourceType: ResourceType): ValidationResult {
   const isImage = file.type.startsWith('image/');
   const isVideo = file.type.startsWith('video/');
 
   if (!isImage && !isVideo) {
-    return 'Tipo de arquivo inválido. Use image/* ou video/*.';
+    return { error: 'Invalid file type. Use image/* or video/*.', status: 400 };
   }
 
   if (resourceType === 'image' && !isImage) {
-    return 'resourceType image requer um arquivo image/*.';
+    return { error: 'resourceType image requires an image/* file.', status: 400 };
   }
 
   if (resourceType === 'video' && !isVideo) {
-    return 'resourceType video requer um arquivo video/*.';
+    return { error: 'resourceType video requires a video/* file.', status: 400 };
   }
 
   if (isImage && file.size > MAX_IMAGE_BYTES) {
-    return 'Imagem acima do limite de 20MB.';
+    return { error: 'Image file too large. Maximum size is 20MB.', status: 413 };
   }
 
   if (isVideo && file.size > MAX_VIDEO_BYTES) {
-    return 'Vídeo acima do limite de 100MB.';
+    return { error: 'Video file too large. Maximum size is 100MB.', status: 413 };
   }
 
   return null;
 }
 
-function uploadBuffer(
-  buffer: Buffer,
-  resourceType: ResourceType,
-  folder: string
-): Promise<UploadApiResponse> {
-  return new Promise((resolve, reject) => {
+function uploadBuffer(buffer: Buffer, resourceType: ResourceType, folder: string) {
+  return new Promise<UploadApiResponse>((resolve, reject) => {
     const stream = cloudinary.uploader.upload_stream(
       {
         folder,
         resource_type: resourceType,
-        quality: 'auto',
-        fetch_format: 'auto',
-        transformation:
-          resourceType === 'image'
-            ? [{ width: 1600, crop: 'limit', quality: 'auto', fetch_format: 'auto' }]
-            : [{ quality: 'auto', fetch_format: 'auto', video_codec: 'auto' }],
-        eager:
-          resourceType === 'video'
-            ? [{ quality: 'auto', fetch_format: 'auto', video_codec: 'auto' }]
-            : undefined,
+        eager: resourceType === 'video' ? [{ quality: 'auto', video_codec: 'auto' }] : undefined,
         eager_async: false,
       },
       (error, result) => {
@@ -84,7 +72,7 @@ function uploadBuffer(
         }
 
         if (!result) {
-          reject(new Error('Cloudinary não retornou resultado do upload.'));
+          reject(new Error('Cloudinary upload returned no result.'));
           return;
         }
 
@@ -116,49 +104,51 @@ function buildPosterUrl(result: UploadApiResponse): string | null {
   });
 }
 
+function jsonError(error: string, status: 400 | 413 | 500) {
+  return NextResponse.json({ error }, { status });
+}
+
 export async function POST(request: Request) {
-  const config = getCloudinaryConfig();
-
-  if (!config) {
-    return NextResponse.json(
-      {
-        error:
-          'Variáveis Cloudinary ausentes. Configure CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY e CLOUDINARY_API_SECRET.',
-      },
-      { status: 500 }
-    );
-  }
-
-  cloudinary.config({
-    cloud_name: config.cloudName,
-    api_key: config.apiKey,
-    api_secret: config.apiSecret,
-    secure: true,
-  });
-
-  const formData = await request.formData();
-  const fileValue = formData.get('file');
-
-  if (!(fileValue instanceof File)) {
-    return NextResponse.json(
-      { error: 'Arquivo ausente. Envie multipart/form-data com campo "file".' },
-      { status: 400 }
-    );
-  }
-
-  const resourceType = getResourceType(fileValue, formData.get('resourceType'));
-  const validationError = validateFile(fileValue, resourceType);
-
-  if (validationError) {
-    return NextResponse.json({ error: validationError }, { status: 400 });
-  }
-
-  const folderValue = formData.get('folder');
-  const folder =
-    typeof folderValue === 'string' && folderValue.trim() ? folderValue : DEFAULT_FOLDER;
-  const buffer = Buffer.from(await fileValue.arrayBuffer());
-
   try {
+    const config = getCloudinaryConfig();
+
+    if (!config) {
+      return jsonError('Cloudinary env vars missing', 500);
+    }
+
+    cloudinary.config({
+      cloud_name: config.cloudName,
+      api_key: config.apiKey,
+      api_secret: config.apiSecret,
+      secure: true,
+    });
+
+    const formData = await request.formData();
+    const fileValue = formData.get('file');
+
+    if (!(fileValue instanceof File)) {
+      return jsonError('Missing file', 400);
+    }
+
+    const resourceType = getResourceType(fileValue, formData.get('resourceType'));
+    const validationError = validateFile(fileValue, resourceType);
+
+    if (validationError) {
+      return jsonError(validationError.error, validationError.status);
+    }
+
+    const folderValue = formData.get('folder');
+    const folder =
+      typeof folderValue === 'string' && folderValue.trim() ? folderValue : DEFAULT_FOLDER;
+
+    console.info('Cloudinary upload request', {
+      fileName: fileValue.name,
+      type: fileValue.type,
+      size: fileValue.size,
+      resourceType,
+    });
+
+    const buffer = Buffer.from(await fileValue.arrayBuffer());
     const result = await uploadBuffer(buffer, resourceType, folder);
     const posterUrl = buildPosterUrl(result);
 
@@ -175,8 +165,8 @@ export async function POST(request: Request) {
       optimized_url: buildOptimizedUrl(result),
     });
   } catch (error) {
-    const message =
-      error instanceof Error ? error.message : 'Falha ao enviar arquivo para Cloudinary.';
-    return NextResponse.json({ error: message }, { status: 502 });
+    const message = error instanceof Error ? error.message : 'Cloudinary upload failed';
+    console.error('Cloudinary upload failed', { message });
+    return jsonError(message, 500);
   }
 }
