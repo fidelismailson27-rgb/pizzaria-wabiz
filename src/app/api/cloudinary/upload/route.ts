@@ -9,6 +9,11 @@ const DEFAULT_FOLDER = 'venerato/galeria';
 
 type ResourceType = 'image' | 'video' | 'auto';
 type ValidationResult = { error: string; status: 400 | 413 } | null;
+type CloudinaryConfig = {
+  apiKey: string;
+  apiSecret: string;
+  cloudName: string;
+};
 
 function getCloudinaryConfig() {
   const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
@@ -89,32 +94,42 @@ function getErrorMessage(error: unknown): string {
   return 'Cloudinary upload failed';
 }
 
-function uploadBuffer(buffer: Buffer, resourceType: ResourceType, folder: string) {
-  return new Promise<UploadApiResponse>((resolve, reject) => {
-    const stream = cloudinary.uploader.upload_stream(
-      {
-        folder,
-        resource_type: resourceType,
-        eager: resourceType === 'video' ? [{ quality: 'auto', video_codec: 'auto' }] : undefined,
-        eager_async: false,
-      },
-      (error, result) => {
-        if (error) {
-          reject(new Error(getErrorMessage(error)));
-          return;
-        }
+async function uploadBuffer(
+  buffer: Buffer,
+  file: File,
+  resourceType: ResourceType,
+  folder: string,
+  config: CloudinaryConfig
+): Promise<UploadApiResponse> {
+  const timestamp = Math.floor(Date.now() / 1000);
+  const signature = cloudinary.utils.api_sign_request({ folder, timestamp }, config.apiSecret);
+  const uploadForm = new FormData();
 
-        if (!result) {
-          reject(new Error('Cloudinary upload returned no result.'));
-          return;
-        }
+  uploadForm.append('file', new Blob([new Uint8Array(buffer)], { type: file.type }), file.name);
+  uploadForm.append('folder', folder);
+  uploadForm.append('api_key', config.apiKey);
+  uploadForm.append('timestamp', String(timestamp));
+  uploadForm.append('signature', signature);
 
-        resolve(result);
-      }
-    );
+  const response = await fetch(
+    `https://api.cloudinary.com/v1_1/${config.cloudName}/${resourceType}/upload`,
+    {
+      method: 'POST',
+      body: uploadForm,
+    }
+  );
+  const responseText = await response.text();
+  const responseJson = responseText ? safeJsonParse(responseText) : null;
 
-    stream.end(buffer);
-  });
+  if (!response.ok) {
+    throw new Error(getCloudinaryResponseError(response.status, responseJson, responseText));
+  }
+
+  if (!responseJson || typeof responseJson !== 'object') {
+    throw new Error('Cloudinary upload returned invalid JSON.');
+  }
+
+  return responseJson as UploadApiResponse;
 }
 
 function buildOptimizedUrl(result: UploadApiResponse): string {
@@ -139,6 +154,34 @@ function buildPosterUrl(result: UploadApiResponse): string | null {
 
 function jsonError(error: string, status: 400 | 413 | 500) {
   return NextResponse.json({ error }, { status });
+}
+
+function safeJsonParse(text: string): unknown {
+  try {
+    return JSON.parse(text) as unknown;
+  } catch {
+    return null;
+  }
+}
+
+function getCloudinaryResponseError(status: number, body: unknown, fallbackText: string) {
+  if (body && typeof body === 'object') {
+    const responseBody = body as { error?: { message?: unknown } | string };
+
+    if (typeof responseBody.error === 'string') {
+      return responseBody.error;
+    }
+
+    if (
+      responseBody.error &&
+      typeof responseBody.error === 'object' &&
+      typeof responseBody.error.message === 'string'
+    ) {
+      return responseBody.error.message;
+    }
+  }
+
+  return fallbackText || `Cloudinary upload failed with HTTP ${status}.`;
 }
 
 export async function POST(request: Request) {
@@ -182,7 +225,7 @@ export async function POST(request: Request) {
     });
 
     const buffer = Buffer.from(await fileValue.arrayBuffer());
-    const result = await uploadBuffer(buffer, resourceType, folder);
+    const result = await uploadBuffer(buffer, fileValue, resourceType, folder, config);
     const posterUrl = buildPosterUrl(result);
 
     return NextResponse.json({
