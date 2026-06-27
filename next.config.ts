@@ -6,6 +6,20 @@ const withBundleAnalyzer = bundleAnalyzer({
 });
 
 const studioOrigins = 'https://www.sanity.io https://*.sanity.io';
+const studioContentSecurityPolicy = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://core.sanity-cdn.com https://www.sanity.io https://*.sanity.io",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https://cdn.sanity.io https://*.sanity.io https://res.cloudinary.com https://avatars.githubusercontent.com",
+  "media-src 'self' blob: https://cdn.sanity.io https://res.cloudinary.com",
+  "font-src 'self'",
+  "connect-src 'self' https://*.sanity.io https://api.sanity.io https://gnepwp1u.api.sanity.io wss://gnepwp1u.api.sanity.io https://sanity-cdn.com https://*.sanity-cdn.com https://api.cloudinary.com https://res.cloudinary.com",
+  'frame-src https://www.google.com https://maps.google.com',
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  `frame-ancestors 'self' ${studioOrigins}`,
+].join('; ');
 
 const securityHeaders = [
   {
@@ -64,6 +78,16 @@ const sanityFrameSecurityHeaders = securityHeaders
     };
   });
 
+const studioSecurityHeaders = securityHeaders
+  .filter((header) => header.key !== 'X-Frame-Options')
+  .map((header) => {
+    if (header.key !== 'Content-Security-Policy') return header;
+    return {
+      ...header,
+      value: studioContentSecurityPolicy,
+    };
+  });
+
 const nextConfig: NextConfig = {
   output: 'standalone',
   reactStrictMode: true,
@@ -82,7 +106,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/studio/:path*',
-        headers: sanityFrameSecurityHeaders,
+        headers: studioSecurityHeaders,
       },
       {
         source: '/((?!$)(?!studio(?:/.*)?$).*)',
