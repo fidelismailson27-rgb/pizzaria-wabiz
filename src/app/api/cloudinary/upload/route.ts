@@ -56,6 +56,39 @@ function validateFile(file: File, resourceType: ResourceType): ValidationResult 
   return null;
 }
 
+function getErrorMessage(error: unknown): string {
+  if (error instanceof Error) return error.message;
+  if (typeof error === 'string') return error;
+
+  if (error && typeof error === 'object') {
+    const cloudinaryError = error as {
+      error?: unknown;
+      http_code?: unknown;
+      message?: unknown;
+      name?: unknown;
+    };
+
+    if (typeof cloudinaryError.message === 'string') {
+      return cloudinaryError.message;
+    }
+
+    if (typeof cloudinaryError.error === 'string') {
+      return cloudinaryError.error;
+    }
+
+    const details = [
+      typeof cloudinaryError.name === 'string' ? cloudinaryError.name : null,
+      typeof cloudinaryError.http_code === 'number' ? `HTTP ${cloudinaryError.http_code}` : null,
+    ].filter(Boolean);
+
+    if (details.length) {
+      return `Cloudinary upload failed (${details.join(', ')})`;
+    }
+  }
+
+  return 'Cloudinary upload failed';
+}
+
 function uploadBuffer(buffer: Buffer, resourceType: ResourceType, folder: string) {
   return new Promise<UploadApiResponse>((resolve, reject) => {
     const stream = cloudinary.uploader.upload_stream(
@@ -67,7 +100,7 @@ function uploadBuffer(buffer: Buffer, resourceType: ResourceType, folder: string
       },
       (error, result) => {
         if (error) {
-          reject(error);
+          reject(new Error(getErrorMessage(error)));
           return;
         }
 
@@ -165,7 +198,7 @@ export async function POST(request: Request) {
       optimized_url: buildOptimizedUrl(result),
     });
   } catch (error) {
-    const message = error instanceof Error ? error.message : 'Cloudinary upload failed';
+    const message = getErrorMessage(error);
     console.error('Cloudinary upload failed', { message });
     return jsonError(message, 500);
   }
